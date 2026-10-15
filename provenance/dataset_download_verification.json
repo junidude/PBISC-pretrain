@@ -1,0 +1,49 @@
+{
+  "cuda_initialized": false,
+  "full_corpus_downloaded": false,
+  "full_disk_plan": {
+    "cache_bytes": 111518298563,
+    "observed_available_bytes": 151901634560,
+    "restored_bytes": 111263071293,
+    "same_filesystem_required_bytes": 233518788096,
+    "sufficient_on_validation_host": false
+  },
+  "full_hash_subset_verification": "PASS",
+  "full_training_ready_verified": false,
+  "limitations": [
+    "No full corpus download, full corpus hash audit, CUDA initialization, optimizer step or training convergence validation.",
+    "Subset restores intentionally omit full recipe/source metadata and supplemental panels.",
+    "Training readiness is established only after complete restoration and SHA256 verification of every declared restored file."
+  ],
+  "lint": "ruff check for dataset wrapper, preserved transport and transport tests: PASS",
+  "lock_sha256": "bb7bacfbfed664cb8c6457bf0cdfa343e386344c87686285635f4b1983b98fef",
+  "network_payload_downloads": 0,
+  "real_archive": {
+    "declared_members": 9,
+    "sha256": "21ad017782ad0216c0308962ebdb659e2f1a131bfefbe6903d0a34f1314aeb69",
+    "size_bytes": 1413120
+  },
+  "repo_id": "junidude14/PBISC-data",
+  "restored_verification": {
+    "complete": false,
+    "status": "SUBSET_READY",
+    "verified_bytes": 2488323,
+    "verified_files": 12,
+    "verified_shards": 1
+  },
+  "resume_without_network": "PASS",
+  "revision": "bfe88d1ff4cc1869946cdb7afda11f7927424ae5",
+  "schema_version": "pbisc.pretrain.download_verification.v1",
+  "status": "BOUNDED_REAL_READBACK_PASS",
+  "subset_disk_plan": {
+    "cache_bytes": 2511445,
+    "restored_bytes": 2511445
+  },
+  "synthetic_tests": {
+    "command": "python -m pytest tests/test_dataset_release.py tests/test_pretrain_dataset.py -q",
+    "environment": "repository .venv Python 3.11 with pinned dependencies; CPU-only",
+    "passed": 24
+  },
+  "temporary_readback_removed_after_verification": true,
+  "training_gate": "REJECTED_SUBSET"
+}

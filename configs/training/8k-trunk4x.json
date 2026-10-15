@@ -1,0 +1,25 @@
+{
+  "asset_paths": {
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/gene_positions.npy": "panels/6k/gene_positions.npy",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/legacy_selection_manifest.v1.json": "panels/6k/legacy_selection_manifest.v1.json",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/selected_genes.csv": "panels/6k/selected_genes.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/additions.csv": "panels/7k/additions.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/gene_positions.npy": "panels/7k/gene_positions.npy",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/old_to_new.csv": "panels/7k/old_to_new.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selected_genes.csv": "panels/7k/selected_genes.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selection_manifest.json": "panels/7k/selection_manifest.json",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/additions.csv": "panels/8k/additions.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/gene_positions.npy": "panels/8k/gene_positions.npy",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/old_to_new.csv": "panels/8k/old_to_new.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selected_genes.csv": "panels/8k/selected_genes.csv",
+    "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selection_manifest.json": "panels/8k/selection_manifest.json"
+  },
+  "description": "8k-trunk4x full All-K plus explicit unseen-training-cell topups; original 16-slot stream preserved",
+  "original_config": "../original/8k-trunk4x.json",
+  "original_config_sha256": "5f96263a0dec5d0f6b0452d064e620d619eec5fc69bbb8c726a0cffc365e6fd0",
+  "panel_evidence_scope": "Literature-expanded research candidate; original manifest exposure and endpoint caveats preserved; no training or H100 parity claim.",
+  "primary_remote_candidate": true,
+  "resume_semantics": "same-run epoch-boundary replay only; changed gene panels require a fresh run",
+  "schema_version": "pbisc.release_training_profile.v1",
+  "trainer": "allcell"
+}

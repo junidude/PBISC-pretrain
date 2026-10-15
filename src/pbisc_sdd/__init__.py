@@ -1,0 +1,76 @@
+"""PBISC conditional sparse-data diffusion core."""
+
+from .data import (
+    MeasurementAwareE2DataModule,
+    MeasurementAwareRecipeBlock,
+    PBISCE2Streams,
+    PBISCSparseCellDataset,
+    SparseValueScaler,
+    SubsetAnnotationFreeConditioner,
+    build_pbisc_e2_streams,
+    condition_with_availability,
+    condition_with_measurement_context,
+    compute_train_measurement_coverage,
+    resolve_gene_positions,
+    subset_conditioner_from_state,
+)
+from .diffusion import (
+    ForwardCorruption,
+    SparseDataDiffusion,
+    SparseDiffusionConfig,
+    SparseDiffusionLoss,
+    SparseSample,
+    ValueLossMode,
+    cosine_log_snr,
+    log_snr_to_alpha_sigma,
+)
+from .gene_selection import (
+    HVGSelection,
+    rank_hvg_statistics,
+    save_hvg_selection,
+    select_train_hvgs,
+)
+from .ema import EMA_STATE_SCHEMA, ExponentialMovingAverage
+from .model import (
+    ConditionalSBDDenoiser,
+    ConditionalSBDDenoiserConfig,
+    DenoiserOutput,
+    SparseDataDenoiser,
+    SparseDenoiserConfig,
+    sinusoidal_time_embedding,
+)
+
+__all__ = [
+    "ConditionalSBDDenoiser",
+    "ConditionalSBDDenoiserConfig",
+    "DenoiserOutput",
+    "EMA_STATE_SCHEMA",
+    "ExponentialMovingAverage",
+    "ForwardCorruption",
+    "HVGSelection",
+    "MeasurementAwareE2DataModule",
+    "MeasurementAwareRecipeBlock",
+    "PBISCE2Streams",
+    "PBISCSparseCellDataset",
+    "SparseDataDenoiser",
+    "SparseDataDiffusion",
+    "SparseDenoiserConfig",
+    "SparseDiffusionConfig",
+    "SparseDiffusionLoss",
+    "SparseSample",
+    "SparseValueScaler",
+    "SubsetAnnotationFreeConditioner",
+    "ValueLossMode",
+    "build_pbisc_e2_streams",
+    "condition_with_availability",
+    "condition_with_measurement_context",
+    "compute_train_measurement_coverage",
+    "cosine_log_snr",
+    "log_snr_to_alpha_sigma",
+    "rank_hvg_statistics",
+    "resolve_gene_positions",
+    "save_hvg_selection",
+    "select_train_hvgs",
+    "subset_conditioner_from_state",
+    "sinusoidal_time_embedding",
+]

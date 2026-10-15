@@ -1,0 +1,163 @@
+{
+  "byte_budgets": {
+    "archive_payload": 110528967290,
+    "cache_total": 111518298563,
+    "headroom_per_filesystem": 10737418240,
+    "member_manifests": 43287351,
+    "metadata_files": 683081715,
+    "release_manifest": 874366,
+    "restored_total": 111263071293,
+    "supplemental_assets": 6860571,
+    "transport_assets": 111510563626
+  },
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007",
+  "count_shards": 432,
+  "preservation": "Root release.json, relocation.json and original source/index manifests remain byte-identical. relocation.pretrain.json only extends supplemental asset_paths.",
+  "release": {
+    "path": "release.json",
+    "sha256": "b270c501d3f444b233e016a536fb17e59c29b359f9ae00684ced70a5d1eff02b",
+    "size_bytes": 874366
+  },
+  "release_asset_count": 1346,
+  "relocation": {
+    "path": "relocation.json",
+    "sha256": "2d1e7b8c6fb246daad9dfd10fd6183c6eac3eb84886f2da9a34ff0fe86569f3c",
+    "size_bytes": 221050
+  },
+  "repo_id": "junidude14/PBISC-data",
+  "repo_type": "dataset",
+  "required_root_assets": [
+    {
+      "kind": "file",
+      "path": "conditioner/conditioner_cache.pt",
+      "sha256": "81ba53ed96fab03ccb3387cd7d8faebcc5d6db53160428fee5ac36f39b888584",
+      "size_bytes": 734273
+    },
+    {
+      "kind": "file",
+      "path": "index/dataset_manifest.json",
+      "sha256": "4f5f16f272db090c256322eac8e3dc8ceca2097589f673fe3492f0107a7f32f4",
+      "size_bytes": 10046
+    },
+    {
+      "kind": "file",
+      "path": "provenance/coverage_v1/summary.json",
+      "sha256": "3904c5b4026f3a5358d6553948f0d4456c80494eab941ab2f7c2975f459d24c5",
+      "size_bytes": 4772
+    },
+    {
+      "kind": "file",
+      "path": "provenance/implementations/panel_ladder.py",
+      "sha256": "45116a496e1f38247dfdaa3d306ab54aa28e13736754dbe9dd75eaa5dc7d518f",
+      "size_bytes": 83075
+    },
+    {
+      "kind": "file",
+      "path": "source/metadata/var.parquet",
+      "sha256": "64f4e30e17763bef37793e7229edb6caa0a7ffe3f3bfa5a08e1d4ca8ea7ea1dc",
+      "size_bytes": 755161
+    },
+    {
+      "kind": "file",
+      "path": "topup/manifest.json",
+      "sha256": "df300a6f7f758c865209c6640e51abcbec10bab9726ee48c3bc3434936316da1",
+      "size_bytes": 6533
+    }
+  ],
+  "revision": "bfe88d1ff4cc1869946cdb7afda11f7927424ae5",
+  "schema_version": "pbisc.pretrain.dataset_lock.v1",
+  "source_fingerprint": "653a06a72a2a785bc2e21fe1666950319e21847dd382e7ff7bfc852815a5f58f",
+  "supplemental_assets": [
+    {
+      "destination": "panels/6k/gene_positions.npy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/gene_positions.npy",
+      "path": "paper-releases/20260928/diffusion/data/panel/floor01_6k_20260923/tiers/6k/gene_positions.npy",
+      "sha256": "653ffa45ac519000baa41086c52408009391d6e68cfb218bc6a50d34163fcb24",
+      "size_bytes": 48128
+    },
+    {
+      "destination": "panels/6k/legacy_selection_manifest.v1.json",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/legacy_selection_manifest.v1.json",
+      "path": "paper-releases/20260928/diffusion/data/panel/floor01_6k_20260923/tiers/6k/legacy_selection_manifest.v1.json",
+      "sha256": "1a6090d312df7d0071b3adaa59bb686a915b996a6c555a9aef9cab151905900a",
+      "size_bytes": 2063
+    },
+    {
+      "destination": "panels/6k/selected_genes.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/selected_genes.csv",
+      "path": "paper-releases/20260928/diffusion/data/panel/floor01_6k_20260923/tiers/6k/selected_genes.csv",
+      "sha256": "09248a3930e3fdefe1dbcd5d60cae4be81028526dcf097dd78169f5a415edfb6",
+      "size_bytes": 451366
+    },
+    {
+      "destination": "panels/7k/additions.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/additions.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/7k/additions.csv",
+      "sha256": "948d00ea714362e44eec144e2be999c9d462765f66db1402d73f13cdedf2699e",
+      "size_bytes": 412256
+    },
+    {
+      "destination": "panels/7k/gene_positions.npy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/gene_positions.npy",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/7k/gene_positions.npy",
+      "sha256": "f4bda0b94e2f5d6fcc7e44e34765a1b77b31dce85de49925bc95b3906ee91e10",
+      "size_bytes": 56128
+    },
+    {
+      "destination": "panels/7k/old_to_new.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/old_to_new.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/7k/old_to_new.csv",
+      "sha256": "05e14a36058b0bc47cd4f750d64d59e19edaac47b78f4dece7e9289e6ced5ec9",
+      "size_bytes": 226685
+    },
+    {
+      "destination": "panels/7k/selected_genes.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selected_genes.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/7k/selected_genes.csv",
+      "sha256": "b9ba04fb554cdec206a72fb6b00f2b3a7c49f038abebaa05473d87a71e265ec1",
+      "size_bytes": 2099815
+    },
+    {
+      "destination": "panels/7k/selection_manifest.json",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selection_manifest.json",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/7k/selection_manifest.json",
+      "sha256": "c31f4adfcb2aa1692f2a54e967de1338276c4c98c7f5744fd97373cb476648d1",
+      "size_bytes": 6097
+    },
+    {
+      "destination": "panels/8k/additions.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/additions.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/8k/additions.csv",
+      "sha256": "bd4f723f4750afb38133e1150423bcf33b52207faddfa09998c1a521f675db13",
+      "size_bytes": 786646
+    },
+    {
+      "destination": "panels/8k/gene_positions.npy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/gene_positions.npy",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/8k/gene_positions.npy",
+      "sha256": "a6d8acb7ef27ae1c2733d50072e2d21cdb54b20a38910a5d10c4c8f9d72305d8",
+      "size_bytes": 64128
+    },
+    {
+      "destination": "panels/8k/old_to_new.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/old_to_new.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/8k/old_to_new.csv",
+      "sha256": "b303cbe00d1f7c90ff65b50492135def80ce92d4587b6577490db1aab504e1be",
+      "size_bytes": 226821
+    },
+    {
+      "destination": "panels/8k/selected_genes.csv",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selected_genes.csv",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/8k/selected_genes.csv",
+      "sha256": "62d961d83cf180dd925e080f696827f48074125cf2725d290cda21247d23c60f",
+      "size_bytes": 2474341
+    },
+    {
+      "destination": "panels/8k/selection_manifest.json",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selection_manifest.json",
+      "path": "paper-releases/pbisc-diffusion/updates/20261015T141849Z-rare-cell-7k-8k-panels/diffusion/dataset/server_1/model8/plans/rare_gene_context_expansion_20261015/panels/8k/selection_manifest.json",
+      "sha256": "d9e46d3d6a0fbd7d7496c3f075a6c7c236eb5062926fd81f34bd071f2d79d8cb",
+      "size_bytes": 6097
+    }
+  ]
+}

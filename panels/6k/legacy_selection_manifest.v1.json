@@ -1,0 +1,39 @@
+{
+  "algorithm": "universal train-only measurement-aware HVG ranking; this tier is a rank prefix emitted in canonical tensor order",
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007",
+  "implementation": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/src/pbisc_sdd/panel_ladder.py",
+  "implementation_sha256": "45116a496e1f38247dfdaa3d306ab54aa28e13736754dbe9dd75eaa5dc7d518f",
+  "n_selected_genes": 6000,
+  "parameters": {
+    "cells_per_recipe": 128,
+    "detection_floor_fraction": 0.001,
+    "mean_bins": 20,
+    "min_detected_cells": 1048,
+    "min_measured_cells": 104857,
+    "model7_root": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_7_no_annotation_sh_hwang",
+    "n_genes": 6000,
+    "recipes": 8192,
+    "seed": 20260627,
+    "statistics_reused_from": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_1m_20260922/sample_8192x128",
+    "target_sum": 10000.0,
+    "tier_sizes": {
+      "2k": 2000,
+      "6k": 6000,
+      "p15k": 15114
+    }
+  },
+  "parent_panel_ladder": {
+    "binding_sha256": "4d45ba1ec9af9236f0c53d29875b903f0985eb67589a932944d5feba453bd7e2",
+    "manifest_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/manifest.json",
+    "schema_version": "pbisc_sdd.panel_ladder.v2",
+    "tier": "6k"
+  },
+  "positions_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/gene_positions.npy",
+  "positions_sha256": "653ffa45ac519000baa41086c52408009391d6e68cfb218bc6a50d34163fcb24",
+  "sampled_cells": 1048576,
+  "sampled_recipes": 8192,
+  "schema_version": "pbisc_sdd.hvg_selection.v1",
+  "selected_genes_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/selected_genes.csv",
+  "selected_genes_sha256": "09248a3930e3fdefe1dbcd5d60cae4be81028526dcf097dd78169f5a415edfb6",
+  "selection_scope": "train_split_only"
+}

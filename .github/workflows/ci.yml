@@ -1,0 +1,42 @@
+name: CPU reproducibility
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  cpu-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CUDA_VISIBLE_DEVICES: ""
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, pinned
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5, pinned
+        with:
+          python-version: "3.11"
+      - name: Install CPU validation environment
+        run: |
+          python -m pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements-cpu.txt
+          python -m pip install --no-deps -e .
+          python -m pip check
+      - name: Review source inventory and lint
+        run: |
+          python scripts/check_repository.py
+          python -m ruff check src/pbisc_pretrain tests/test_pretrain_cli.py scripts/check_repository.py
+      - name: CPU contract suite
+        run: python -m pytest -q
+      - name: Build and exercise installed wheel outside checkout
+        run: |
+          python -m build
+          python -m venv --system-site-packages /tmp/pbisc-wheel-check
+          /tmp/pbisc-wheel-check/bin/python -m pip install --ignore-installed --no-deps dist/*.whl
+          cd /tmp
+          /tmp/pbisc-wheel-check/bin/python -c "import pbisc_pretrain; assert '/tmp/pbisc-wheel-check/' in pbisc_pretrain.__file__"
+          /tmp/pbisc-wheel-check/bin/pbisc-pretrain --help
+          /tmp/pbisc-wheel-check/bin/pbisc-pretrain doctor
+          /tmp/pbisc-wheel-check/bin/pbisc-pretrain smoke --device cpu --output-dir /tmp/pbisc-installed-smoke

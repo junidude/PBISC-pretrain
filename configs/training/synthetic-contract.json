@@ -1,0 +1,63 @@
+{
+  "schema_version": "pbisc_sdd.train.v1",
+  "experiment_id": "smoke_native_e2",
+  "paths": {
+    "model7_root": ".",
+    "conditioner_cache": "conditioner_cache.pt",
+    "output_dir": "runs/synthetic-contract"
+  },
+  "data": {
+    "n_genes": 64,
+    "gene_positions_path": null,
+    "gene_selection": "coverage_with_immune_markers",
+    "train_recipes": 2,
+    "validation_recipes": 1,
+    "test_recipes": 1,
+    "train_cells_per_block": 4,
+    "validation_cells_per_block": 4,
+    "test_cells_per_block": 4,
+    "include_availability_in_condition": true,
+    "include_bulk_measurement_in_condition": true,
+    "progress": false
+  },
+  "model": {
+    "hidden_dims": [
+      64,
+      32
+    ],
+    "time_embedding_dim": 32,
+    "context_dim": 32,
+    "dropout": 0.0
+  },
+  "diffusion": {
+    "max_log1p_value": 8.0,
+    "center_values": true,
+    "clip_denoised": true,
+    "support_scale": 1.0,
+    "cosine_offset": 0.008,
+    "log_snr_clip": 20.0,
+    "value_loss_mode": "active_only",
+    "value_loss_weight": 1.0,
+    "support_loss_weight": 1.0,
+    "self_condition_probability": 0.5
+  },
+  "training": {
+    "epochs": 1,
+    "batch_size": 4,
+    "max_train_steps": 2,
+    "max_validation_steps": 1,
+    "lr": 0.0002,
+    "weight_decay": 0.0001,
+    "grad_clip": 5.0,
+    "num_workers": 0,
+    "pin_memory": false,
+    "device": "cpu",
+    "seed": 20260627
+  },
+  "sampling": {
+    "steps": 4,
+    "eta": 0.0,
+    "active_logit_threshold": 0.0,
+    "preview_cells": 4
+  }
+}

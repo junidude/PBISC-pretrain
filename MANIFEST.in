@@ -1,0 +1,10 @@
+include THIRD_PARTY_NOTICES.md CITATION.cff
+include AGENTS.md CLAUDE.md SECURITY.md CONTRIBUTING.md
+recursive-include scripts *.py
+recursive-include configs *.json
+recursive-include manifests *.json
+recursive-include panels *.json *.csv *.npy
+recursive-include provenance *.json *.py
+recursive-include docs *.md
+include requirements-base.txt requirements-h100.txt requirements-cpu.txt
+include constraints-tested.txt

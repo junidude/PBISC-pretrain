@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=80,<81", "wheel>=0.45,<0.46"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pbisc-pretrain"
+version = "0.1.0"
+description = "Reproducible PBISC-Diffusion pretraining with pinned corpus and gene panels"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [{name = "PBISC contributors"}]
+license-files = ["THIRD_PARTY_NOTICES.md"]
+dependencies = [
+  "torch==2.9.0",
+  "numpy==1.26.4",
+  "pandas==2.3.3",
+  "scipy==1.16.3",
+  "pyarrow==22.0.0",
+  "huggingface-hub==0.36.0",
+  "zarr==3.1.5",
+  "numcodecs==0.16.5",
+  "tqdm==4.67.3",
+  "nvidia-ml-py==13.580.82",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.2", "build==1.3.0", "ruff==0.14.14"]
+
+[project.scripts]
+pbisc-pretrain = "pbisc_pretrain.cli:main"
+
+[project.urls]
+Repository = "https://github.com/junidude/PBISC-pretrain"
+Dataset = "https://huggingface.co/datasets/junidude14/PBISC-data"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.data-files]
+"share/pbisc-pretrain" = ["README.md", "AGENTS.md", "CLAUDE.md", "CITATION.cff", "requirements-*.txt", "constraints-tested.txt"]
+"share/pbisc-pretrain/docs" = ["docs/*.md"]
+"share/pbisc-pretrain/configs/training" = ["configs/training/*.json"]
+"share/pbisc-pretrain/configs/original" = ["configs/original/*.json"]
+"share/pbisc-pretrain/manifests" = ["manifests/*.json"]
+"share/pbisc-pretrain/panels/6k" = ["panels/6k/*"]
+"share/pbisc-pretrain/panels/7k" = ["panels/7k/*"]
+"share/pbisc-pretrain/panels/8k" = ["panels/8k/*"]
+"share/pbisc-pretrain/provenance" = ["provenance/*.json", "provenance/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

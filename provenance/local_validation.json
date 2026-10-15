@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "CPU/package/data-contract readiness only; destination H100 execution is required",
+  "python": "3.11.14",
+  "torch": "2.9.0+cpu",
+  "cpu_tests": {
+    "passed": 166,
+    "elapsed_seconds": 13.13
+  },
+  "package_build": "sdist and pure-Python wheel passed",
+  "installed_wheel": {
+    "outside_checkout": true,
+    "four_profile_seals_verified": true,
+    "installed_data_lock_verified": true,
+    "agent_guide_packaged": true,
+    "smoke": {
+      "status": "PASS",
+      "test": "synthetic_model_contract_only",
+      "full_corpus_training_tested": false,
+      "device": "cpu",
+      "torch": "2.9.0+cpu",
+      "amp": "none",
+      "model_config": {
+        "n_genes": 32,
+        "condition_dim": 102,
+        "hidden_dims": [
+          32,
+          32,
+          16,
+          8
+        ],
+        "time_embedding_dim": 16,
+        "context_dim": 16,
+        "dropout": 0.0,
+        "max_time_period": 10000.0
+      },
+      "optimizer_steps": 2,
+      "losses": [
+        1.4864916801452637,
+        1.4586060047149658
+      ],
+      "exact_resumed_model": true,
+      "exact_resumed_ema": true,
+      "unavailable_output_zero": true,
+      "generated_finite": true,
+      "cuda_initialized": false,
+      "checkpoint_sha256": "524cabf558c7d364c38091642c4f01ac7c9ff7c4c5a909aa79a48b2ace3eb02d"
+    }
+  },
+  "dataset_revision": "bfe88d1ff4cc1869946cdb7afda11f7927424ae5",
+  "dataset_readback": "see dataset_download_verification.json; one real shard, not full corpus",
+  "real_8k_cpu_slice": {
+    "status": "PASS",
+    "target_cells": 64,
+    "genes": 8000,
+    "condition_dim": 24006,
+    "operation": "actual sparse rows, full canonical conditioner, masks, tiny hidden16 diffusion forward",
+    "optimizer_or_backward": false,
+    "receipt_sha256": "1507f7a966410b558c8a180fcc6db88a606df918cf968db17421612d8dad42c9"
+  },
+  "independent_review_sha256": "6a4d56fd60658815760c7cdf087278053ac6cb4424c6eab1ca5ef0b0f730d845",
+  "source_scan": "no credential pattern or unapproved data/checkpoint payload found",
+  "full_corpus_restoration_tested": false,
+  "cuda_initialized": false,
+  "h100_execution_tested": false,
+  "github_ci": "Check the workflow status of the exact Git commit; this report records local evidence only."
+}

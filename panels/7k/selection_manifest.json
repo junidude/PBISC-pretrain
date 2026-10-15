@@ -1,0 +1,100 @@
+{
+  "schema": "pbisc.rare_gene_expansion.candidate.v1",
+  "status": "research_candidate_only_no_training_or_active_config_change",
+  "n_selected_genes": 7000,
+  "old_n_genes": 6000,
+  "tensor_order": "ascending canonical raw panel_position; CSV row=tensor axis",
+  "gene_id_key": "Ensembl stable ID; duplicate biological symbols are distinct loci, flagged separately",
+  "source_preservation": "all original 6000 Ensembl IDs preserved",
+  "gene_positions_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/gene_positions.npy",
+  "gene_positions_sha256": "f4bda0b94e2f5d6fcc7e44e34765a1b77b31dce85de49925bc95b3906ee91e10",
+  "selected_genes_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selected_genes.csv",
+  "selected_genes_sha256": "b9ba04fb554cdec206a72fb6b00f2b3a7c49f038abebaa05473d87a71e265ec1",
+  "old_to_new": {
+    "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/old_to_new.csv",
+    "bytes": 226685,
+    "sha256": "05e14a36058b0bc47cd4f750d64d59e19edaac47b78f4dece7e9289e6ced5ec9"
+  },
+  "reason_counts": {
+    "preserved_final6k": 6000,
+    "primary_literature_curated": 1000
+  },
+  "source_bindings": [
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/research/disease/evidence.csv",
+      "bytes": 1248197,
+      "sha256": "6a9d56309580cf74c4d7e74a5fe4f57b60ce558400e31a6a6af5df483f14317a"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/research/ilc_dc/evidence.csv",
+      "bytes": 5966592,
+      "sha256": "4069ab07b995115741cc7649c36ba7e7366e9ab715f1bf5c3b49191cce7b8c61"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/research/ilc_dc/protected_sentinels.csv",
+      "bytes": 5580,
+      "sha256": "76f7b9db90b6ec0319b0f68dc3e380dd852bb2dc2776b936b9149859453ed296"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_7_no_annotation_sh_hwang/data/e2_full_source/metadata/var.parquet",
+      "bytes": 755161,
+      "sha256": "64f4e30e17763bef37793e7229edb6caa0a7ffe3f3bfa5a08e1d4ca8ea7ea1dc"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/reference/hgnc_complete_set_downloaded.tsv",
+      "bytes": 16982276,
+      "sha256": "2828618d23d315be76ea415f7ef0e951858716ebab07e2d584190f52e5178c1e"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/reference/hgnc_download_receipt.json",
+      "bytes": 492,
+      "sha256": "666f522f8e15616e1fb747dd2d652949f60c1f7d226a8293fb26b4853f570a28"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/manifest.json",
+      "bytes": 13488,
+      "sha256": "acbc8bc2cca5ecf3d3002e711b1d4a55b4069f17ae9666f0d64c197ca5cbc775"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/full_gene_statistics.csv",
+      "bytes": 2919972,
+      "sha256": "745c8b5df2d1007f31e24e8391f15421885b78ca1c1026705ced4ae8d7591288"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/ranked_gene_positions.npy",
+      "bytes": 160904,
+      "sha256": "4f6ce4fa492525cf06d68119a40c27d525ab6a36a4a99e09046684ae6edd767a"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/selected_genes.csv",
+      "bytes": 451366,
+      "sha256": "09248a3930e3fdefe1dbcd5d60cae4be81028526dcf097dd78169f5a415edfb6"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/gene_positions.npy",
+      "bytes": 48128,
+      "sha256": "653ffa45ac519000baa41086c52408009391d6e68cfb218bc6a50d34163fcb24"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/audited_gene_universe.csv",
+      "bytes": 3759282,
+      "sha256": "4ba63a5eec12d308ee7f7656ef3a61c9295e7446a88efe92604734fe9fe0c0f6"
+    },
+    {
+      "path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/build_panels.py",
+      "bytes": 20137,
+      "sha256": "ec36872c10d3a560fa60ae8d42760cf70b596806453eedba7a69612a826302f7"
+    }
+  ],
+  "legacy_loader_compatible_manifest": false,
+  "loader_gate": "The existing explicit_train_only_hvg_manifest loader rejects this evidence-driven selector. A reviewed loader/manifest extension is required before training; do not disguise it as train-only HVG.",
+  "gene_selection_expression_scope": "frozen pretraining-train-only HVG statistics; no local held-out expression accessed",
+  "literature_scope": "includes benchmark-author endpoint-informed markers; not fully independent unbiased feature selection",
+  "priority_policy": "core first; fair population and source-program round robin among supporting blood and bounded disease lists; optional stimulation then optional tissue; eligible train-only HVG backfill only if needed",
+  "known_limitations": [
+    "A source-defined program is a candidate feature list, not a complete or sufficient identity test",
+    "1M sampled detection is not population-specific, not full-corpus abundance, and zero is inconclusive",
+    "Official HGNC snapshot fetched 2026-10-15; raw canonical axis remains the existing project freeze",
+    "Raw-unavailable genes require new preprocessing and cannot be appended as zero-valued columns"
+  ]
+}

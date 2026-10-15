@@ -1,0 +1,16 @@
+# Runtime pins shared by the CPU validation and H100 environments.
+-c constraints-tested.txt
+numpy==1.26.4
+pandas==2.3.3
+scipy==1.16.3
+pyarrow==22.0.0
+huggingface-hub==0.36.0
+zarr==3.1.5
+numcodecs==0.16.5
+tqdm==4.67.3
+nvidia-ml-py==13.580.82
+fsspec==2026.2.0
+packaging==25.0
+filelock==3.19.1
+requests==2.32.5
+typing-extensions==4.15.0

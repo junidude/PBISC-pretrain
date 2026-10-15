@@ -1,0 +1,187 @@
+{
+  "active_model8_source": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion",
+  "changes": {
+    "src/pbisc/training/allcell_roundrobin.py": "Use identical shared All-K stream validation allowing prefetch1..64, record actual depth, preserve16-slot schedule and epoch-boundary contracts; CPUguardconditional.",
+    "src/pbisc/training/portable.py": "Preserve originalconfig seals and numericresume contracts; require explicitdatasetroot for profiles, support hashbound supplemental relocation map.",
+    "src/pbisc_sdd/data.py": "Portable package-localModel7 import preserved; add active optional exact fast_rows gather only.",
+    "src/pbisc_sdd/experiment.py": "Preserve legacyHVG schema gates; add separate evidence-driven expandedpanel validation and reject distributed invocations before devicequeries.",
+    "src/pbisc_sdd/ladder_experiment.py": "Add current per-component mmap model/EMA/optimizer staging; cloneCPUtensorstates; keep original portable resume canonicalization."
+  },
+  "cpu_verification": {
+    "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_training*.py tests/test_fast_rows.py",
+    "limitations": "No CUDA initialization, GPU training, H100 smoke, numericalGPUparity or biological performance measured.",
+    "python": "3.11",
+    "pytorch": "2.9.0+cpu",
+    "real_8k_vertical_slice": {
+      "allcell_prefetch_regression": "Boundedmain reaches count loading with each originalproductionprofileprefetch32; actualprefetch recorded in pairing",
+      "measurement_condition_shape": [
+        64,
+        24006
+      ],
+      "model": "tiny hidden16 CPU denoiser; no production trunk4x, optimizer, backward or CUDA",
+      "peak_rss_mib": 552.92578125,
+      "recipe_k": 1000,
+      "report": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/pretrain_repository_20261015/validation/real_8k_cpu_vertical_slice_20261016.json",
+      "sha256": "1507f7a966410b558c8a180fcc6db88a606df918cf968db17421612d8dad42c9",
+      "status": "PASS",
+      "value_shape": [
+        64,
+        8000
+      ]
+    },
+    "real_panels": "7k/8k actual source-var hash, canonical Ensembl IDs, raw coordinates and exact6000legacygene preservation checked without count loading",
+    "result": "137 passed in 7.28s"
+  },
+  "derived_configurations": {
+    "7k-trunk4x": "6k-trunk4x with explicit7k manifest,new n_genes and experiment_id/output_dir",
+    "8k-trunk4x": "6k-trunk4x with explicit8k manifest,new n_genes and experiment_id/output_dir"
+  },
+  "extraction_base": "/home/sj_server_1/PBISC/release-staging/code",
+  "files": {
+    "src/model7_no_annotation/__init__.py": {
+      "original_sha256": "5f3e6bc40ef0d8551c8cb9417459d4d8dd848c173b2d248286ef933267397ed2",
+      "packaged_sha256": "5f3e6bc40ef0d8551c8cb9417459d4d8dd848c173b2d248286ef933267397ed2",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/model7_no_annotation/__init__.py",
+      "status": "unchanged"
+    },
+    "src/model7_no_annotation/data.py": {
+      "original_sha256": "08c0ca526f4383036d649ad1a3ba9a509cd9da7557118a50a797ebe7c3dea51e",
+      "packaged_sha256": "08c0ca526f4383036d649ad1a3ba9a509cd9da7557118a50a797ebe7c3dea51e",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/model7_no_annotation/data.py",
+      "status": "unchanged"
+    },
+    "src/model7_no_annotation/data_e2.py": {
+      "original_sha256": "be6086c6ff84a3a4d3256d3680ee89fddd9f5c0d35f5409166997d8e9a3b49c8",
+      "packaged_sha256": "be6086c6ff84a3a4d3256d3680ee89fddd9f5c0d35f5409166997d8e9a3b49c8",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/model7_no_annotation/data_e2.py",
+      "status": "unchanged"
+    },
+    "src/pbisc/training/__init__.py": {
+      "original_sha256": "70a864a679b2b33271d65bc74d49d1f1d8c568e0e2fd43d0cd3eb5bea24ca519",
+      "packaged_sha256": "f172e3b64992ff120c8cdd78b51df37f113815e85b1c63245c2363104c9e95e7",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc/training/__init__.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc/training/allcell.py": {
+      "original_sha256": "0dc1da6dbfda10662bcde376e1a4cb46fe06c6b6b34db838929177d08c77d583",
+      "packaged_sha256": "0b254b1f18db3f39a417f6499281167d36b13320bfe8e3cad7438d5ca20b26ce",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc/training/allcell.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc/training/allcell_roundrobin.py": {
+      "original_sha256": "8be1772b009c4788c84098821f213f0d0370b1e937e37c483a09e4ddfd29018d",
+      "packaged_sha256": "46486bb2b2ebf3035666dbc46cc2e8c35ef44588b7c5d6511618108fea935aff",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc/training/allcell_roundrobin.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc/training/build_e2_index.py": {
+      "original_sha256": "ef46aa1c2a13f8707163dd6be1480dff44e768200ef3e149b5a4579c2986e63a",
+      "packaged_sha256": "ef46aa1c2a13f8707163dd6be1480dff44e768200ef3e149b5a4579c2986e63a",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc/training/build_e2_index.py",
+      "status": "unchanged"
+    },
+    "src/pbisc/training/portable.py": {
+      "original_sha256": "1e74be990639781fd4e55d1a89bb3f337fcd3d58affd9469775610957a590bbd",
+      "packaged_sha256": "6e44c0e60842d8867acf4a694c5fbb6805cdc30b7516b01b9569cc0cf0569f4e",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc/training/portable.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc_sdd/__init__.py": {
+      "original_sha256": "46c7212b637e67f2b44b616fef47f964a284b576ba56c372f71463ce46ea24ee",
+      "packaged_sha256": "46c7212b637e67f2b44b616fef47f964a284b576ba56c372f71463ce46ea24ee",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/__init__.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/data.py": {
+      "original_sha256": "ffcb0c75945700754b45b3c9fac1a2e20d33370982b1e5c9637b6cff41194f24",
+      "packaged_sha256": "8d8aae749b8a77c1c94b2026428f9682feb633e9ce1350ac1fadd5acb5292283",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/data.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc_sdd/diffusion.py": {
+      "original_sha256": "ed97ca9fe56b9328da9ee455d4fbfc4b5102dfcf4f2364363bb715d19610429f",
+      "packaged_sha256": "ed97ca9fe56b9328da9ee455d4fbfc4b5102dfcf4f2364363bb715d19610429f",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/diffusion.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/ema.py": {
+      "original_sha256": "dcc982725b7f94986b4b13b782c7a587b9efcf06d4fd444e9bf51bca051940c1",
+      "packaged_sha256": "dcc982725b7f94986b4b13b782c7a587b9efcf06d4fd444e9bf51bca051940c1",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/ema.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/expanded_panel.py": {
+      "original_sha256": null,
+      "packaged_sha256": "6c84a8d7d16b22024702a516ae801202d358c590a725e6ace3127d9576b1429a",
+      "source": null,
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc_sdd/experiment.py": {
+      "original_sha256": "6c1bd201edffa7dc2dbd1de549cd8fc7c7dc2b3e90593a67b2ef090d4d39dbc9",
+      "packaged_sha256": "66a6174921621e297c346029f2638a08a9348c0ce15be467dd2723c7642e6fae",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/experiment.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc_sdd/fast_rows.py": {
+      "original_sha256": "83cb181499903d20d5aeb58a3e978af5cf132751057561d12f5920ce23378c60",
+      "packaged_sha256": "83cb181499903d20d5aeb58a3e978af5cf132751057561d12f5920ce23378c60",
+      "source": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/src/pbisc_sdd/fast_rows.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/gene_selection.py": {
+      "original_sha256": "e8518f2a6c36d0691352c9e47a1725e025778e89e05061c3ad75044d42e2f785",
+      "packaged_sha256": "e8518f2a6c36d0691352c9e47a1725e025778e89e05061c3ad75044d42e2f785",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/gene_selection.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/ladder_experiment.py": {
+      "original_sha256": "1870abfca465ccfa1f5d39fe95b97a2a8f0ef33cd9e5a1107ac45f1ec40502a0",
+      "packaged_sha256": "2526edd5549c52f1325a4e94fb7fb5f9d0fe56601987dd71cc79f720e2448cc8",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/ladder_experiment.py",
+      "status": "portable adaptation or new validation"
+    },
+    "src/pbisc_sdd/model.py": {
+      "original_sha256": "c3d725b97d003b9b2fb45d5061d5f7daffe89fd37147f9d53753b3ed2da77ffa",
+      "packaged_sha256": "c3d725b97d003b9b2fb45d5061d5f7daffe89fd37147f9d53753b3ed2da77ffa",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/model.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/panel_ladder.py": {
+      "original_sha256": "ba91282ae22a13129e4e96c9ede40cb6a3fb4e74c3c94101c809ef63b561cfb8",
+      "packaged_sha256": "ba91282ae22a13129e4e96c9ede40cb6a3fb4e74c3c94101c809ef63b561cfb8",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/panel_ladder.py",
+      "status": "unchanged"
+    },
+    "src/pbisc_sdd/proportion_hint.py": {
+      "original_sha256": "7a352d73728e78c9d262e29c35628d2437af0bc7743b88c077ba81d911dd2a52",
+      "packaged_sha256": "7a352d73728e78c9d262e29c35628d2437af0bc7743b88c077ba81d911dd2a52",
+      "source": "/home/sj_server_1/PBISC/release-staging/code/src/pbisc_sdd/proportion_hint.py",
+      "status": "unchanged"
+    }
+  },
+  "immutable_panel_expansion_builder": {
+    "path": "provenance/panel_expansion_builder.py",
+    "sha256": "ec36872c10d3a560fa60ae8d42760cf70b596806453eedba7a69612a826302f7",
+    "source": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/build_panels.py"
+  },
+  "immutable_panel_implementation": {
+    "path": "provenance/panel_ladder.py",
+    "sha256": "45116a496e1f38247dfdaa3d306ab54aa28e13736754dbe9dd75eaa5dc7d518f"
+  },
+  "notes": [
+    "Mathematical model, diffusion, EMA and proportion-hint modules are preserved byte-for-byte.",
+    "No GPU, training, biological or H100 numerical parity claim follows from this packaging.",
+    "Archive absolute paths are provenance; release profiles require an explicit restored dataset root and new output directory."
+  ],
+  "original_configuration_sources": {
+    "6k-trunk4x": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/f01_trunk4x_complete_20261013/payload/pretrain/f01_6k_trunk4x_seed20260627/effective_config.json",
+    "6k-x1": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/runs/f01_6k_1x_seed20260627/effective_config.json"
+  },
+  "schema_version": "pbisc.pretrain_core_sources.v1",
+  "unchanged_math_modules": [
+    "src/pbisc_sdd/model.py",
+    "src/pbisc_sdd/diffusion.py",
+    "src/pbisc_sdd/ema.py",
+    "src/pbisc_sdd/proportion_hint.py"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "data": {
+    "coverage_audit_sha256": "3904c5b4026f3a5358d6553948f0d4456c80494eab941ab2f7c2975f459d24c5",
+    "coverage_audit_summary": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/full_recipe_allcells_6k_broad_20260909/coverage_v1/summary.json",
+    "expanded_panel_contract": {
+      "canonical_panel_sha256": "64f4e30e17763bef37793e7229edb6caa0a7ffe3f3bfa5a08e1d4ca8ea7ea1dc",
+      "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007"
+    },
+    "gene_positions_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/gene_positions.npy",
+    "gene_positions_sha256": "a6d8acb7ef27ae1c2733d50072e2d21cdb54b20a38910a5d10c4c8f9d72305d8",
+    "gene_selection": "explicit_rare_gene_expansion_manifest",
+    "gene_selection_manifest": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selection_manifest.json",
+    "gene_selection_manifest_sha256": "d9e46d3d6a0fbd7d7496c3f075a6c7c236eb5062926fd81f34bd071f2d79d8cb",
+    "include_availability_in_condition": true,
+    "include_bulk_measurement_in_condition": true,
+    "n_genes": 8000,
+    "priming_policy": "all-train-first-then-validation-v1",
+    "profile_worst_k": false,
+    "progress": false,
+    "test_cells_per_block": 64,
+    "test_recipes": 192,
+    "topup_manifest": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/full_recipe_allcells_6k_broad_20260909/topup_v1/manifest.json",
+    "topup_manifest_sha256": "df300a6f7f758c865209c6640e51abcbec10bab9726ee48c3bc3434936316da1",
+    "train_cells_per_block": 4000,
+    "train_recipes": 8192,
+    "validation_cells_per_block": 64,
+    "validation_recipes": 192
+  },
+  "diffusion": {
+    "center_values": true,
+    "clip_denoised": true,
+    "cosine_offset": 0.008,
+    "log_snr_clip": 20.0,
+    "max_log1p_value": 8.0,
+    "self_condition_probability": 0.5,
+    "support_loss_weight": 1.0,
+    "support_scale": 1.0,
+    "value_loss_mode": "all_measured",
+    "value_loss_weight": 1.0
+  },
+  "experiment_id": "f01_8k_trunk4x_seed20260627",
+  "model": {
+    "context_dim": 512,
+    "dropout": 0.0,
+    "hidden_dims": [
+      4096,
+      4096,
+      2048,
+      1024
+    ],
+    "time_embedding_dim": 128
+  },
+  "paths": {
+    "conditioner_cache": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_7_no_annotation_sh_hwang/runs/E2_full_no_annotation_4epoch_seed20260627/conditioner_cache.pt",
+    "model7_root": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_7_no_annotation_sh_hwang",
+    "output_dir": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/runs/f01_8k_trunk4x_seed20260627"
+  },
+  "sampling": {
+    "active_logit_threshold": 0.0,
+    "eta": 0.0,
+    "preview_cells": 256,
+    "steps": 50
+  },
+  "schema_version": "pbisc_sdd.train.v1",
+  "training": {
+    "amp": "bf16",
+    "batch_size": 256,
+    "device": "cuda",
+    "ema_decay": 0.999,
+    "ema_update_every": 1,
+    "epochs": 16,
+    "grad_clip": 5.0,
+    "gradient_accumulation_steps": 1,
+    "heartbeat_every_steps": 100,
+    "lr": 0.0002,
+    "max_cuda_memory_gib": 24.0,
+    "max_cuda_temperature_c_at_start": 75.0,
+    "max_cuda_utilization_percent_at_start": 10.0,
+    "max_train_steps": 0,
+    "max_validation_steps": 0,
+    "min_cuda_memory_available_gib": 0.0,
+    "min_system_memory_available_gib": 32.0,
+    "num_workers": 4,
+    "pin_memory": true,
+    "prefetch_factor": 32,
+    "seed": 20260627,
+    "weight_decay": 0.0
+  }
+}
