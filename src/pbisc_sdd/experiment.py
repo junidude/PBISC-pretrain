@@ -140,10 +140,12 @@ def load_experiment_config(path: Path | str) -> dict[str, object]:
                 "automatic gene selection must be coverage_with_immune_markers"
             )
     else:
-        if selection_mode not in {"explicit_train_only_hvg_manifest", "explicit_rare_gene_expansion_manifest"}:
+        if selection_mode not in {"explicit_train_only_hvg_manifest", "explicit_rare_gene_expansion_manifest",
+                                  "explicit_gene_context_collection_manifest"}:
             raise ValueError(
                 "an explicit positions file requires gene_selection="
-                "'explicit_train_only_hvg_manifest' or 'explicit_rare_gene_expansion_manifest'"
+                "'explicit_train_only_hvg_manifest', 'explicit_rare_gene_expansion_manifest' "
+                "or 'explicit_gene_context_collection_manifest'"
             )
         manifest_path = Path(str(data.get("gene_selection_manifest", ""))).expanduser()
         if not manifest_path.is_file():
@@ -182,6 +184,9 @@ def load_experiment_config(path: Path | str) -> dict[str, object]:
         if selection_mode == "explicit_rare_gene_expansion_manifest":
             from .expanded_panel import validate_expanded_panel
             validate_expanded_panel(payload)
+        elif selection_mode == "explicit_gene_context_collection_manifest":
+            from .collection_panel import validate_collection_panel
+            validate_collection_panel(payload)
 
     hidden_dims = model.get("hidden_dims")
     if not isinstance(hidden_dims, list) or not hidden_dims:
@@ -523,6 +528,11 @@ def build_streams_from_config(
         progress=progress,
     )
     manifest_path = data.get("gene_selection_manifest")
+    if manifest_path not in (None, "") and data.get("gene_selection") == "explicit_gene_context_collection_manifest":
+        from .collection_panel import validate_collection_panel
+        validate_collection_panel(config, gene_panel=streams.data_module.gene_panel,
+                                  corpus_fingerprint=streams.data_module.corpus_fingerprint)
+        return streams
     if manifest_path not in (None, "") and data.get("gene_selection") == "explicit_rare_gene_expansion_manifest":
         from .expanded_panel import validate_expanded_panel
         validate_expanded_panel(config, gene_panel=streams.data_module.gene_panel,

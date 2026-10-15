@@ -33,10 +33,7 @@ assignment, time, storage, and spending limits. Do not kill another job.
    and memory, then resume within the authorized allocation. See
    `docs/TRAINING.md` for interruption and resume semantics.
 
-Use the 8k-trunk4x profile as the proposed starting candidate unless the operator
-selected another profile. Its biological quality and full H100 resource use are
-unproven. Report evidence without upgrading synthetic, CPU, or preparation-only
-results into a successful H100 training claim.
+The current requested campaign is the 15-run matrix in `configs/matrix.json`: 7k/8k/10k each 1x, trunk2x, trunk4x, ctx2x, ctx4x. Read `docs/MATRIX.md`. Use the bundled `gene_context/` assets and canonical-corpus data verification (`--corpus-only`). Run the requested selection serially on one allocated H100, with explicit `--resume-existing` for recovery. Do not substitute the earlier legacy 8k-trunk4x profile or start extra 2k/3k/6k runs. All new stored config paths are relative; normalize caller data/output paths once. Biological quality and full H100 resource use remain unproven.
 
 ## GPU and memory safety
 

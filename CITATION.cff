@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite the reviewed PBISC-pretrain software version. Manuscript citation details will be added when confirmed by the owner."
 title: "PBISC-pretrain"
+version: "0.2.0"
 type: software
 authors:
   - name: "PBISC contributors"

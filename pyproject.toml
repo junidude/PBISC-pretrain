@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pbisc-pretrain"
-version = "0.1.0"
+version = "0.2.0"
 description = "Reproducible PBISC-Diffusion pretraining with pinned corpus and gene panels"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
@@ -40,12 +40,25 @@ where = ["src"]
 "share/pbisc-pretrain" = ["README.md", "AGENTS.md", "CLAUDE.md", "CITATION.cff", "requirements-*.txt", "constraints-tested.txt"]
 "share/pbisc-pretrain/docs" = ["docs/*.md"]
 "share/pbisc-pretrain/configs/training" = ["configs/training/*.json"]
+"share/pbisc-pretrain/configs" = ["configs/matrix.json"]
+"share/pbisc-pretrain/configs/base" = ["configs/base/*.json"]
+"share/pbisc-pretrain/configs/matrix" = ["configs/matrix/*.json"]
 "share/pbisc-pretrain/configs/original" = ["configs/original/*.json"]
 "share/pbisc-pretrain/manifests" = ["manifests/*.json"]
 "share/pbisc-pretrain/panels/6k" = ["panels/6k/*"]
 "share/pbisc-pretrain/panels/7k" = ["panels/7k/*"]
 "share/pbisc-pretrain/panels/8k" = ["panels/8k/*"]
 "share/pbisc-pretrain/provenance" = ["provenance/*.json", "provenance/*.py"]
+"share/pbisc-pretrain/gene_context" = ["gene_context/*.py", "gene_context/*.json", "gene_context/*.csv", "gene_context/*.md"]
+"share/pbisc-pretrain/gene_context/inputs" = ["gene_context/inputs/*"]
+"share/pbisc-pretrain/gene_context/panels/2k" = ["gene_context/panels/2k/*"]
+"share/pbisc-pretrain/gene_context/panels/3k" = ["gene_context/panels/3k/*"]
+"share/pbisc-pretrain/gene_context/panels/6k" = ["gene_context/panels/6k/*"]
+"share/pbisc-pretrain/gene_context/panels/7k" = ["gene_context/panels/7k/*"]
+"share/pbisc-pretrain/gene_context/panels/8k" = ["gene_context/panels/8k/*"]
+"share/pbisc-pretrain/gene_context/panels/10k" = ["gene_context/panels/10k/*"]
+"share/pbisc-pretrain/gene_context/historical/2k" = ["gene_context/historical/2k/*"]
+"share/pbisc-pretrain/gene_context/historical/3k" = ["gene_context/historical/3k/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

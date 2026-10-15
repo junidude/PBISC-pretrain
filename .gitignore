@@ -37,6 +37,9 @@ htmlcov/
 *.npz
 *.npy
 !panels/**/gene_positions.npy
+!gene_context/panels/**/gene_positions.npy
+!gene_context/historical/**/gene_positions.npy
+!gene_context/inputs/ranked_gene_positions.npy
 *.tar
 *.tar.gz
 *.zip

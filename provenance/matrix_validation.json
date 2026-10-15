@@ -1,0 +1,392 @@
+{
+  "status": "PASS",
+  "scope": "Portable15-profile code/data/architecture contracts; no H100 training",
+  "cpu_tests": {
+    "passed": 234,
+    "seconds": 25.6
+  },
+  "python": "3.11.14",
+  "torch": "2.9.0+cpu",
+  "actual_15_profiles_x_3_layouts": true,
+  "actual_canonical_axis": {
+    "status": "PASS",
+    "profiles": [
+      {
+        "id": "7k-1x",
+        "n_genes": 7000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "7k-trunk2x",
+        "n_genes": 7000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            2048,
+            2048,
+            1024,
+            512
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "7k-trunk4x",
+        "n_genes": 7000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            4096,
+            4096,
+            2048,
+            1024
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "7k-ctx2x",
+        "n_genes": 7000,
+        "model": {
+          "context_dim": 1024,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "7k-ctx4x",
+        "n_genes": 7000,
+        "model": {
+          "context_dim": 2048,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "8k-1x",
+        "n_genes": 8000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "8k-trunk2x",
+        "n_genes": 8000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            2048,
+            2048,
+            1024,
+            512
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "8k-trunk4x",
+        "n_genes": 8000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            4096,
+            4096,
+            2048,
+            1024
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "8k-ctx2x",
+        "n_genes": 8000,
+        "model": {
+          "context_dim": 1024,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "8k-ctx4x",
+        "n_genes": 8000,
+        "model": {
+          "context_dim": 2048,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "10k-1x",
+        "n_genes": 10000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "10k-trunk2x",
+        "n_genes": 10000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            2048,
+            2048,
+            1024,
+            512
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "10k-trunk4x",
+        "n_genes": 10000,
+        "model": {
+          "context_dim": 512,
+          "dropout": 0.0,
+          "hidden_dims": [
+            4096,
+            4096,
+            2048,
+            1024
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "10k-ctx2x",
+        "n_genes": 10000,
+        "model": {
+          "context_dim": 1024,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      },
+      {
+        "id": "10k-ctx4x",
+        "n_genes": 10000,
+        "model": {
+          "context_dim": 2048,
+          "dropout": 0.0,
+          "hidden_dims": [
+            1024,
+            1024,
+            512,
+            256
+          ],
+          "time_embedding_dim": 128
+        }
+      }
+    ],
+    "uses_original_canonical_var_bytes": true,
+    "expression_read": false,
+    "training_or_cuda": false
+  },
+  "installed_wheel": {
+    "status": "PASS",
+    "installed_asset_root": "/home/sj_server_1/PBISC/PBISC-pretrain/.venv-wheel/share/pbisc-pretrain",
+    "profiles": [
+      "7k-1x",
+      "7k-trunk2x",
+      "7k-trunk4x",
+      "7k-ctx2x",
+      "7k-ctx4x",
+      "8k-1x",
+      "8k-trunk2x",
+      "8k-trunk4x",
+      "8k-ctx2x",
+      "8k-ctx4x",
+      "10k-1x",
+      "10k-trunk2x",
+      "10k-trunk4x",
+      "10k-ctx2x",
+      "10k-ctx4x"
+    ],
+    "payload_panels": [
+      7000,
+      8000,
+      10000
+    ],
+    "complete_collection_verifier": "PASS",
+    "runtime_source_files": 31,
+    "lazy_preparation_no_torch": true,
+    "training_or_cuda": false
+  },
+  "architecture_shapes": {
+    "status": "PASS",
+    "model_constructions": [
+      {
+        "id": "7k-1x",
+        "n_genes": 7000,
+        "condition_dim": 21006,
+        "parameters": 61867184,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "7k-trunk2x",
+        "n_genes": 7000,
+        "condition_dim": 21006,
+        "parameters": 121021616,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "7k-trunk4x",
+        "n_genes": 7000,
+        "condition_dim": 21006,
+        "parameters": 266069168,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "7k-ctx2x",
+        "n_genes": 7000,
+        "condition_dim": 21006,
+        "parameters": 77804208,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "7k-ctx4x",
+        "n_genes": 7000,
+        "condition_dim": 21006,
+        "parameters": 114396848,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "8k-1x",
+        "n_genes": 8000,
+        "condition_dim": 24006,
+        "parameters": 69549184,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "8k-trunk2x",
+        "n_genes": 8000,
+        "condition_dim": 24006,
+        "parameters": 134847616,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "8k-trunk4x",
+        "n_genes": 8000,
+        "condition_dim": 24006,
+        "parameters": 292183168,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "8k-ctx2x",
+        "n_genes": 8000,
+        "condition_dim": 24006,
+        "parameters": 87022208,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "8k-ctx4x",
+        "n_genes": 8000,
+        "condition_dim": 24006,
+        "parameters": 126686848,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "10k-1x",
+        "n_genes": 10000,
+        "condition_dim": 30006,
+        "parameters": 84913184,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "10k-trunk2x",
+        "n_genes": 10000,
+        "condition_dim": 30006,
+        "parameters": 162499616,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "10k-trunk4x",
+        "n_genes": 10000,
+        "condition_dim": 30006,
+        "parameters": 344411168,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "10k-ctx2x",
+        "n_genes": 10000,
+        "condition_dim": 30006,
+        "parameters": 105458208,
+        "all_weights_on_meta": true
+      },
+      {
+        "id": "10k-ctx4x",
+        "n_genes": 10000,
+        "condition_dim": 30006,
+        "parameters": 151266848,
+        "all_weights_on_meta": true
+      }
+    ],
+    "cuda_initialized": false,
+    "training": false
+  },
+  "gene_context_payload_files": 56,
+  "gene_context_bundled_not_remote_panels": true,
+  "new_profile_and_base_paths_relative": true,
+  "independent_review": "PASS; see docs/MATRIX_REVIEW.md",
+  "training_or_cuda": false,
+  "github_ci": "Consult exact-commit workflow checks; this report records local evidence."
+}

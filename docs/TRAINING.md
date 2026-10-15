@@ -7,35 +7,19 @@ managed GB10 source host, follow the guard checks and `ml-run` requirement in
 
 ## Select a profile
 
-| Profile | Genes | Descending trunk widths | Purpose |
-| --- | ---: | --- | --- |
-| `configs/training/6k-x1.json` | 6,000 | 1024, 1024, 512, 256 | Original-width comparison |
-| `configs/training/6k-trunk4x.json` | 6,000 | 4096, 4096, 2048, 1024 | Wider-trunk comparison |
-| `configs/training/7k-trunk4x.json` | 7,000 | 4096, 4096, 2048, 1024 | Expanded-panel candidate |
-| `configs/training/8k-trunk4x.json` | 8,000 | 4096, 4096, 2048, 1024 | Recommended starting candidate |
-
-The 7k/8k profiles are candidates; wider coverage is not evidence of better
-downstream performance. Full H100 memory, throughput, and training quality need
-measurement. Profiles preserve the all-cell schedule and named scientific
-settings; changes require a separately named experiment.
-
-Each portable profile binds its underlying config and panel metadata by hash.
-Use `--data-root` to relocate the locked corpus and `--output-dir` to choose a
-new run directory. Do not edit original absolute paths or remove hash checks.
-Installed packages also provide the named profiles; the CLI resolves
-`configs/training/...` outside a checkout through its installed shared assets.
+The active campaign has fifteen relative v2 profiles under `configs/matrix/`, enumerated by `configs/matrix.json`. See [MATRIX.md](MATRIX.md) for the exact gene lists, independent trunk/context axes, and sequential controller. For an individual example use `configs/matrix/8k-trunk4x.json` with canonical-corpus data verification. The four original v1 profiles under `configs/training/` remain historical reference configurations and use legacy-with-panels verification.
 
 ## Prepare and run a bounded first slot
 
 After full data verification and environment checks:
 
 ```bash
-pbisc-pretrain smoke --output-dir /work/pbisc-smoke-cpu --device cpu
-pbisc-pretrain smoke --output-dir /work/pbisc-smoke-h100 --device cuda
-pbisc-pretrain prepare --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x
-pbisc-pretrain train --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x \
+pbisc-pretrain smoke --output-dir runs/smoke-cpu --device cpu
+pbisc-pretrain smoke --output-dir runs/smoke-h100 --device cuda
+pbisc-pretrain prepare --config configs/matrix/8k-trunk4x.json \
+  --data-root data/pbisc --output-dir runs/8k-trunk4x
+pbisc-pretrain train --config configs/matrix/8k-trunk4x.json \
+  --data-root data/pbisc --output-dir runs/8k-trunk4x \
   --stop-after-epoch 1
 ```
 
@@ -56,9 +40,9 @@ the logs and environment evidence with the run.
 Resume the trusted latest checkpoint with the same profile and output directory:
 
 ```bash
-pbisc-pretrain train --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x \
-  --resume /work/runs/8k-trunk4x/checkpoint_latest.pt
+pbisc-pretrain train --config configs/matrix/8k-trunk4x.json \
+  --data-root data/pbisc --output-dir runs/8k-trunk4x \
+  --resume runs/8k-trunk4x/checkpoint_latest.pt
 ```
 
 Omitting `--stop-after-epoch` runs the remaining configured schedule. To perform
@@ -68,7 +52,7 @@ Only documented path relocation is permitted; changed numeric configuration,
 model shape, panel/data identity, or incompatible checkpoint content fails
 closed. Full PyTorch resume checkpoints must come from a trusted source.
 
-The 7k and 8k models have different input/output shapes. A 6k checkpoint cannot
+The 7k, 8k and 10k models have different input/output shapes. A 6k checkpoint cannot
 resume either profile, and a 7k checkpoint cannot resume 8k. Start a fresh run
 directory for a different panel or model. A weights-only export is not a full
 training-resume checkpoint.

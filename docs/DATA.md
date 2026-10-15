@@ -1,3 +1,15 @@
+# Current 15-run matrix data scope
+
+Use `--corpus-only` for the new `configs/matrix/` profiles. The full pinned canonical corpus is required; actual 7k/8k/10k gene contexts are already bundled in Git and the wheel. This scope omits the thirteen legacy remote panel supplements and does not need `relocation.pretrain.json`. Its `.pretrain/corpus-verification.json` and `.pretrain/corpus-verified-files.json` are independent of the older legacy verification ledger. A subset can never train.
+
+```bash
+pbisc-pretrain data plan --corpus-only --data-root data/pbisc --cache-dir cache/pbisc
+pbisc-pretrain data download --corpus-only --data-root data/pbisc --cache-dir cache/pbisc
+pbisc-pretrain data verify --corpus-only --data-root data/pbisc
+```
+
+The following original release transport details remain relevant to the canonical corpus. Commands without `--corpus-only` retain legacy-with-panels behavior for `configs/training/`.
+
 # Pinned data download and restoration
 
 The dataset is a transport release of the existing E2 corpus. It is not an
@@ -35,9 +47,9 @@ not establish source-study redistribution permission. Preserve
 Choose paths outside the checkout, then run:
 
 ```bash
-pbisc-pretrain data plan --data-root /data/pbisc --cache-dir /scratch/pbisc-download
-pbisc-pretrain data download --data-root /data/pbisc --cache-dir /scratch/pbisc-download
-pbisc-pretrain data verify --data-root /data/pbisc --cache-dir /scratch/pbisc-download
+pbisc-pretrain data plan --data-root data/pbisc --cache-dir cache/pbisc-download
+pbisc-pretrain data download --data-root data/pbisc --cache-dir cache/pbisc-download
+pbisc-pretrain data verify --data-root data/pbisc --cache-dir cache/pbisc-download
 ```
 
 `plan` reports required storage before the full transfer. `download` retrieves
@@ -74,7 +86,7 @@ assets used by these profiles. The transport preserves base Zarr v3 and strict
 overlay Zarr v2 bytes rather than re-encoding their values.
 
 ```text
-/data/pbisc/
+data/pbisc/
   release.json
   relocation.json
   relocation.pretrain.json

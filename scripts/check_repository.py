@@ -23,7 +23,10 @@ def main() -> int:
         if not path.is_file() or path.is_symlink():
             errors.append((relative, "not a regular file"))
             continue
-        if path.suffix in forbidden or (path.suffix == ".npy" and not relative.startswith("panels/")):
+        panel_axis = (relative.startswith(("panels/", "gene_context/panels/", "gene_context/historical/"))
+                      and path.name == "gene_positions.npy")
+        ranked_axis = relative == "gene_context/inputs/ranked_gene_positions.npy"
+        if path.suffix in forbidden or (path.suffix == ".npy" and not (panel_axis or ranked_axis)):
             errors.append((relative, "unapproved data/checkpoint/credential file"))
         if path.stat().st_size > 5 * 1024 * 1024:
             errors.append((relative, "file exceeds reviewed 5 MiB source limit"))

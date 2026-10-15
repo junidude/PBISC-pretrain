@@ -19,7 +19,7 @@ coordinates. Do not round expression values, merge donor identities across
 studies, regenerate split membership, or rebuild the conditioner/panel silently.
 
 Condition normalization uses the **full 20,097-gene source panel before the
-training gene subset is selected**. Normalizing a 6k/7k/8k panel independently
+training gene subset is selected**. Normalizing a 6k/7k/8k/10k panel independently
 changes library-size factors and scalar features. Preserve the selected bulk
 expression features, availability and bulk-measurement features, and six scalar
 features: the final condition input has dimension `3G + 6` for G training genes.
@@ -53,16 +53,9 @@ Do not replace this schedule with a generic shuffled DataLoader over every cell.
 
 ## Models and expanded panels
 
-The 6k x1 and 6k trunk4x profiles preserve their bound original configurations.
-The 7k and 8k profiles use the pinned expanded panels and the same trunk4x widths.
-Panel positions, selection manifests, selected-gene tables, and old-to-new
-mappings are tracked as small metadata assets. Their hashes bind panel identity.
-Expanded panels create different model shapes and therefore require fresh
-training, not a renamed 6k checkpoint.
+The current 15 profiles use 7k/8k/10k panels and baseline1x, trunk2x/4x or context2x/4x widths. Context width and trunk width are independent ablation axes. Time embedding128 and all schedule/optimizer settings remain fixed. See [MATRIX.md](MATRIX.md).
 
-The 8k-trunk4x profile is a proposed starting candidate. Panel coverage and code
-contract tests do not establish improved rare-cell performance, downstream
-quality, or a successful full H100 pretraining run.
+The 7k/8k source arrays are frozen copies; 10k includes6000baseline+2091frozenliterature+1909trainHVG. This is a mixed-selector gene-number comparison, not a pureHVG size ablation. Preserve endpoint-informed source caveats; additional coverage is not validated biological recovery. The new v2 runtime bindings read actual repository-owned collection assets, using separate corpus-relative paths for count/split/conditioner inputs. Original6k profiles remain separate preserved reference configurations.
 
 ## Evidence levels
 

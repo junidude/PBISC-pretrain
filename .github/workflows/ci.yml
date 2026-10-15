@@ -28,6 +28,7 @@ jobs:
         run: |
           python scripts/check_repository.py
           python -m ruff check src/pbisc_pretrain tests/test_pretrain_cli.py scripts/check_repository.py
+          python gene_context/verify_collection.py --root gene_context
       - name: CPU contract suite
         run: python -m pytest -q
       - name: Build and exercise installed wheel outside checkout
@@ -39,4 +40,7 @@ jobs:
           /tmp/pbisc-wheel-check/bin/python -c "import pbisc_pretrain; assert '/tmp/pbisc-wheel-check/' in pbisc_pretrain.__file__"
           /tmp/pbisc-wheel-check/bin/pbisc-pretrain --help
           /tmp/pbisc-wheel-check/bin/pbisc-pretrain doctor
+          /tmp/pbisc-wheel-check/bin/pbisc-pretrain matrix list > /tmp/pbisc-matrix.json
+          /tmp/pbisc-wheel-check/bin/python -c "import json; assert len(json.load(open('/tmp/pbisc-matrix.json'))['experiments']) == 15"
+          /tmp/pbisc-wheel-check/bin/python -c "from pbisc_pretrain.resources import asset_root; import subprocess,sys; r=asset_root()/'gene_context'; subprocess.run([sys.executable,str(r/'verify_collection.py'),'--root',str(r)],check=True)"
           /tmp/pbisc-wheel-check/bin/pbisc-pretrain smoke --device cpu --output-dir /tmp/pbisc-installed-smoke

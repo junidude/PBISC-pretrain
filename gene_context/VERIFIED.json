@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "main_nested_sizes": [
+    2000,
+    3000,
+    6000,
+    7000,
+    8000,
+    10000
+  ],
+  "panels": [
+    {
+      "panel": "panels/2k",
+      "genes": 2000,
+      "unique_symbols": 2000,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "panels/3k",
+      "genes": 3000,
+      "unique_symbols": 2999,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "panels/6k",
+      "genes": 6000,
+      "unique_symbols": 5990,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "panels/7k",
+      "genes": 7000,
+      "unique_symbols": 6989,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "panels/8k",
+      "genes": 8000,
+      "unique_symbols": 7987,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "panels/10k",
+      "genes": 10000,
+      "unique_symbols": 9985,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "historical/2k",
+      "genes": 2000,
+      "unique_symbols": 2000,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    },
+    {
+      "panel": "historical/3k",
+      "genes": 3000,
+      "unique_symbols": 2998,
+      "row_order_and_coordinates": "PASS",
+      "txt_order_and_duplicate_symbols": "PASS"
+    }
+  ],
+  "ten_k_reason_counts": {
+    "preserved_final6k": 6000,
+    "frozen_primary_literature_curated": 2091,
+    "train_only_HVG_ranked_backfill_not_literature_curated": 1909
+  },
+  "ten_k_all_new_genes_train_sample_measured_and_detected": true,
+  "frozen_panel_files_exact": 12,
+  "original_source_panel_files_rechecked": 12,
+  "current2k3k6k_rank_replay": "PASS",
+  "frozen7k8k_order_replay": "PASS",
+  "ten_k_extension_replay": "PASS",
+  "old6k_mapping": "PASS",
+  "wide_membership": "PASS",
+  "no_training_or_inference": true,
+  "manifest_sha256": "ce84ae0138081e4d358e925badde0be656f2c6c5b0cbe4115fef2855a539f9ac",
+  "verifier_sha256": "a474b7712552ebb1e86e75902962d2708f368dc00084b308018f8169cd826ab5"
+}

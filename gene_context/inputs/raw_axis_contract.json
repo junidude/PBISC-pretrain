@@ -1,0 +1,51 @@
+{
+  "schema": "pbisc.gene_context_collection.raw_axis.v1",
+  "n_genes": 20097,
+  "raw_var_sha256": "64f4e30e17763bef37793e7229edb6caa0a7ffe3f3bfa5a08e1d4ca8ea7ea1dc",
+  "canonical_panel_sha256": "9f6dd441e00d4e00168d69d6133ddb2802ab9e87a20c35ddfe1bcfa84f5ebcce",
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007",
+  "gene_id_key": "unique Ensembl ID; symbols may repeat",
+  "coordinate_contract": "panel_position is the zero-based original raw 20,097-gene axis; selected CSV row equals tensor index",
+  "gene_universe": {
+    "path": "inputs/gene_universe.csv",
+    "bytes": 2191241,
+    "sha256": "28491648e477ab220061cd2f48beac921bf1606c888a5a521c55b2ff84958a14"
+  },
+  "ranked_gene_positions": {
+    "path": "inputs/ranked_gene_positions.npy",
+    "bytes": 160904,
+    "sha256": "4f6ce4fa492525cf06d68119a40c27d525ab6a36a4a99e09046684ae6edd767a"
+  },
+  "ranking_contract": {
+    "broad_tier_policy": "all_eligible_genes",
+    "finite_tier_policy": "universal_eligible_rank_prefix",
+    "min_detected_cells": 1048,
+    "min_measured_cells": 104857,
+    "rank_base": 1,
+    "ranked_population": "all_canonical_genes_eligible_first",
+    "tensor_order": "canonical_gene_panel_order",
+    "tier_independent": true
+  },
+  "historical_source_bindings": [
+    {
+      "role": "raw_var_provenance_only",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_7_no_annotation_sh_hwang/data/e2_full_source/metadata/var.parquet",
+      "bytes": 755161,
+      "sha256": "64f4e30e17763bef37793e7229edb6caa0a7ffe3f3bfa5a08e1d4ca8ea7ea1dc"
+    },
+    {
+      "role": "canonical_panel_and_ranking_contract_provenance_only",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/manifest.json",
+      "bytes": 13488,
+      "sha256": "acbc8bc2cca5ecf3d3002e711b1d4a55b4069f17ae9666f0d64c197ca5cbc775"
+    },
+    {
+      "role": "raw_var_binding_manifest_provenance_only",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/selection_manifest.json",
+      "bytes": 6252,
+      "sha256": "2c8922df98464c99b83a1402bb7cb5a2fc83122be4fc1c7a1bd1924b673b67f6"
+    }
+  ],
+  "raw_expression_or_parquet_included": false,
+  "runtime_note": "Historical original_path values are provenance only. Rebuilding needs only this collection. Training separately requires verified corpus metadata."
+}

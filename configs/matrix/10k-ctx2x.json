@@ -1,0 +1,32 @@
+{
+  "asset_root": "../..",
+  "base_config": "../base/allcell-v2.json",
+  "base_config_sha256": "d7aa0d84c6a7ffccf18d920a0810e9a9686d639ad9a6229d4d31b30a63a3f8ee",
+  "collection_manifest_sha256": "ce84ae0138081e4d358e925badde0be656f2c6c5b0cbe4115fef2855a539f9ac",
+  "evidence_scope": "New untrained pretraining configuration; source collection selection and exposure caveats retained.",
+  "experiment_axes": {
+    "context_multiplier": 2,
+    "gene_context": "10k",
+    "trunk_multiplier": 1
+  },
+  "overrides": {
+    "data": {
+      "n_genes": 10000
+    },
+    "experiment_id": "gc_10k_ctx2x_seed20260627",
+    "model": {
+      "context_dim": 1024,
+      "hidden_dims": [
+        1024,
+        1024,
+        512,
+        256
+      ]
+    }
+  },
+  "panel_manifest": "gene_context/panels/10k/selection_manifest.json",
+  "panel_manifest_sha256": "29d23584f2cd4ab46c69237130e6c46551a07c35370a6725a985cc3d81ee195c",
+  "raw_axis_contract_sha256": "bd8ed3f778433788500f98ae06f9baa3e2e3aa08030e238ae07842f3e6403384",
+  "schema_version": "pbisc.pretrain.profile.v2",
+  "trainer": "allcell"
+}

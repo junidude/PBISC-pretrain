@@ -1,0 +1,80 @@
+{
+  "data": {
+    "coverage_audit_sha256": "3904c5b4026f3a5358d6553948f0d4456c80494eab941ab2f7c2975f459d24c5",
+    "coverage_audit_summary": "provenance/coverage_v1/summary.json",
+    "include_availability_in_condition": true,
+    "include_bulk_measurement_in_condition": true,
+    "n_genes": 7000,
+    "priming_policy": "all-train-first-then-validation-v1",
+    "profile_worst_k": false,
+    "progress": false,
+    "test_cells_per_block": 64,
+    "test_recipes": 192,
+    "topup_manifest": "topup/manifest.json",
+    "topup_manifest_sha256": "df300a6f7f758c865209c6640e51abcbec10bab9726ee48c3bc3434936316da1",
+    "train_cells_per_block": 4000,
+    "train_recipes": 8192,
+    "validation_cells_per_block": 64,
+    "validation_recipes": 192
+  },
+  "diffusion": {
+    "center_values": true,
+    "clip_denoised": true,
+    "cosine_offset": 0.008,
+    "log_snr_clip": 20.0,
+    "max_log1p_value": 8.0,
+    "self_condition_probability": 0.5,
+    "support_loss_weight": 1.0,
+    "support_scale": 1.0,
+    "value_loss_mode": "all_measured",
+    "value_loss_weight": 1.0
+  },
+  "experiment_id": "gene_context_architecture_base",
+  "model": {
+    "context_dim": 512,
+    "dropout": 0.0,
+    "hidden_dims": [
+      1024,
+      1024,
+      512,
+      256
+    ],
+    "time_embedding_dim": 128
+  },
+  "paths": {
+    "conditioner_cache": "conditioner/conditioner_cache.pt",
+    "model7_root": ".",
+    "output_dir": "runs/explicit-output-required"
+  },
+  "sampling": {
+    "active_logit_threshold": 0.0,
+    "eta": 0.0,
+    "preview_cells": 256,
+    "steps": 50
+  },
+  "schema_version": "pbisc_sdd.train.v1",
+  "training": {
+    "amp": "bf16",
+    "batch_size": 256,
+    "device": "cuda",
+    "ema_decay": 0.999,
+    "ema_update_every": 1,
+    "epochs": 16,
+    "grad_clip": 5.0,
+    "gradient_accumulation_steps": 1,
+    "heartbeat_every_steps": 100,
+    "lr": 0.0002,
+    "max_cuda_memory_gib": 24.0,
+    "max_cuda_temperature_c_at_start": 75.0,
+    "max_cuda_utilization_percent_at_start": 10.0,
+    "max_train_steps": 0,
+    "max_validation_steps": 0,
+    "min_cuda_memory_available_gib": 0.0,
+    "min_system_memory_available_gib": 32.0,
+    "num_workers": 4,
+    "pin_memory": true,
+    "prefetch_factor": 32,
+    "seed": 20260627,
+    "weight_decay": 0.0
+  }
+}

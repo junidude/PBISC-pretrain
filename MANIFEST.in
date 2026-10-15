@@ -4,6 +4,7 @@ recursive-include scripts *.py
 recursive-include configs *.json
 recursive-include manifests *.json
 recursive-include panels *.json *.csv *.npy
+recursive-include gene_context *.json *.csv *.npy *.txt *.md *.py
 recursive-include provenance *.json *.py
 recursive-include docs *.md
 include requirements-base.txt requirements-h100.txt requirements-cpu.txt

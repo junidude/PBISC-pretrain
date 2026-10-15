@@ -107,13 +107,16 @@ def _disk_plan(root: Path, cache: Path, cache_bytes: int, restored_bytes: int, h
 
 
 def plan_dataset(data_root: Path | str, cache_dir: Path | str, *, shard_ids: Sequence[str] | None = None,
-                 lock: dict[str, Any] | None = None) -> dict[str, Any]:
+                 lock: dict[str, Any] | None = None, corpus_only: bool = False) -> dict[str, Any]:
     """Plan without payload downloads; full sizing is available entirely offline."""
     lock = load_lock() if lock is None else lock
     root, cache = _roots(data_root, cache_dir, lock)
     budget = lock["byte_budgets"]
     if shard_ids is None:
         cache_bytes, restored_bytes = budget["cache_total"], budget["restored_total"]
+        if corpus_only:
+            extra = budget.get("supplemental_assets", sum(a["size_bytes"] for a in lock["supplemental_assets"]))
+            cache_bytes, restored_bytes = cache_bytes - extra, restored_bytes - extra
     else:
         if not (cache / "release.json").is_file():
             raise ValueError("subset planning needs the pinned release.json in the transport cache; download fetches it first")
@@ -123,6 +126,7 @@ def plan_dataset(data_root: Path | str, cache_dir: Path | str, *, shard_ids: Seq
         restored_bytes = cache_bytes
     return {"schema_version": "pbisc.pretrain.dataset_plan.v1", "repo_id": lock["repo_id"], "revision": lock["revision"],
             "scope": "full" if shard_ids is None else "subset", "training_ready_after_subset": False,
+            "data_scope": "canonical_corpus" if corpus_only else "legacy_with_panels",
             "cache_bytes": cache_bytes, "restored_bytes": restored_bytes,
             "sizing": "conservative fresh-copy bytes; existing files are checked and reused during download",
             **_disk_plan(root, cache, cache_bytes, restored_bytes, budget["headroom_per_filesystem"])}
@@ -183,7 +187,7 @@ def _members(cache: Path, archive: dict[str, Any], by_path: dict[str, dict[str, 
 
 
 def download_dataset(data_root: Path | str, cache_dir: Path | str, *, shard_ids: Sequence[str] | None = None,
-                     lock: dict[str, Any] | None = None) -> dict[str, Any]:
+                     lock: dict[str, Any] | None = None, corpus_only: bool = False) -> dict[str, Any]:
     """Download and restore the pinned corpus, or perform a bounded shard readback.
 
     Existing files with differing bytes are rejected. Completed files are rehashed
@@ -196,14 +200,17 @@ def download_dataset(data_root: Path | str, cache_dir: Path | str, *, shard_ids:
         _fetch(cache, lock["release"], lock)
         release = _release(cache, lock)
         assets = _assets(release, shard_ids)
-        supplemental = lock["supplemental_assets"] if shard_ids is None else []
+        supplemental = lock["supplemental_assets"] if shard_ids is None and not corpus_only else []
         # Charge only missing cache files. Destination credit is granted only to
         # files that were previously hashed and whose stat seals still match.
         missing_cache = sum(a["size_bytes"] for a in assets if not _safe_join(cache, a["path"]).exists())
         missing_cache += sum(a["size_bytes"] for a in supplemental if not _safe_join(cache, a["destination"]).exists())
-        saved = _restored_credit(root, cache, assets, supplemental, lock)
+        saved = _restored_credit(root, cache, assets, supplemental, lock, corpus_only=corpus_only)
         restored_bound = (lock["byte_budgets"]["restored_total"] if shard_ids is None
                           else sum(a["size_bytes"] for a in assets) + lock["release"]["size_bytes"])
+        if corpus_only and shard_ids is None:
+            restored_bound -= lock["byte_budgets"].get(
+                "supplemental_assets", sum(a["size_bytes"] for a in lock["supplemental_assets"]))
         disk = _disk_plan(root, cache, missing_cache, max(0, restored_bound - saved),
                           lock["byte_budgets"]["headroom_per_filesystem"])
         if not disk["sufficient"]:
@@ -229,13 +236,13 @@ def download_dataset(data_root: Path | str, cache_dir: Path | str, *, shard_ids:
         for asset in supplemental:
             portable = {**asset, "path": asset["destination"]}
             _copy_verified(_fetch(cache, portable, lock, remote_path=asset["path"]), root, portable)
-        if shard_ids is None:
+        if shard_ids is None and not corpus_only:
             extension = _extension(root, lock)
             extension_path = _safe_join(root, "relocation.pretrain.json")
             if extension_path.exists() and _json(extension_path) != extension:
                 raise ValueError("existing pretrain relocation conflicts with pinned extension")
             _write_json(extension_path, extension)
-        return _verify_restored(root, lock, shard_ids)
+        return _verify_restored(root, lock, shard_ids, corpus_only=corpus_only)
 
 
 def _seal(root: Path, asset: dict[str, Any]) -> dict[str, Any]:
@@ -257,12 +264,15 @@ def _check_seals(root: Path, records: list[dict[str, Any]]) -> None:
             raise ValueError(f"verified restored file changed; run data verify: {record['path']}")
 
 
-def _ledger(root: Path, lock: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    receipt = _json(_safe_join(root, ".pretrain/verification.json"))
-    ledger_path = _safe_join(root, ".pretrain/verified-files.json")
+def _ledger(root: Path, lock: dict[str, Any], *, corpus_only: bool = False) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    prefix = "corpus-" if corpus_only else ""
+    receipt = _json(_safe_join(root, f".pretrain/{prefix}verification.json"))
+    ledger_path = _safe_join(root, f".pretrain/{prefix}verified-files.json")
     if (receipt.get("schema_version") != RECEIPT_SCHEMA or receipt.get("revision") != lock["revision"]
             or receipt.get("lock_sha256") != _digest(lock) or sha256_file(ledger_path) != receipt.get("ledger_sha256")):
         raise ValueError("verification receipt or file ledger is not bound to the pinned lock")
+    if receipt.get("data_scope", "legacy_with_panels") != ("canonical_corpus" if corpus_only else "legacy_with_panels"):
+        raise ValueError("verification receipt data scope differs")
     records = _json(ledger_path)["files"]
     if len(records) != receipt.get("verified_files") or len({r["path"] for r in records}) != len(records):
         raise ValueError("verification file ledger count differs")
@@ -270,9 +280,9 @@ def _ledger(root: Path, lock: dict[str, Any]) -> tuple[dict[str, Any], list[dict
     return receipt, records
 
 
-def _sealed_bytes(root: Path, lock: dict[str, Any]) -> int:
+def _sealed_bytes(root: Path, lock: dict[str, Any], *, corpus_only: bool = False) -> int:
     try:
-        receipt, records = _ledger(root, lock)
+        receipt, records = _ledger(root, lock, corpus_only=corpus_only)
     except (OSError, ValueError, KeyError):
         return 0
     if receipt.get("status") != "TRAIN_READY" or receipt.get("verified_shards") != lock["count_shards"]:
@@ -281,9 +291,9 @@ def _sealed_bytes(root: Path, lock: dict[str, Any]) -> int:
 
 
 def _restored_credit(root: Path, cache: Path, assets: list[dict[str, Any]], supplemental: list[dict[str, Any]],
-                     lock: dict[str, Any]) -> int:
+                     lock: dict[str, Any], *, corpus_only: bool = False) -> int:
     """Credit only verified existing bytes, including an interrupted restoration."""
-    sealed = _sealed_bytes(root, lock)
+    sealed = _sealed_bytes(root, lock, corpus_only=corpus_only)
     if sealed:
         return sealed
     expected = [lock["release"], *(a for a in assets if a["kind"] != "tar")]
@@ -303,14 +313,15 @@ def _restored_credit(root: Path, cache: Path, assets: list[dict[str, Any]], supp
     return total
 
 
-def _verify_restored(root: Path, lock: dict[str, Any], shard_ids: Sequence[str] | None) -> dict[str, Any]:
+def _verify_restored(root: Path, lock: dict[str, Any], shard_ids: Sequence[str] | None,
+                     *, corpus_only: bool = False) -> dict[str, Any]:
     release = _release(root, lock)
     assets = _assets(release, shard_ids)
     by_path = {a["path"]: a for a in assets}
     expected = [lock["release"], *(a for a in assets if a["kind"] != "tar")]
     for archive in (a for a in assets if a["kind"] == "tar"):
         expected.extend(_members(root, archive, by_path))
-    if shard_ids is None:
+    if shard_ids is None and not corpus_only:
         expected.extend({**a, "path": a["destination"]} for a in lock["supplemental_assets"])
         path = _safe_join(root, "relocation.pretrain.json")
         if _json(path) != _extension(root, lock):
@@ -320,29 +331,32 @@ def _verify_restored(root: Path, lock: dict[str, Any], shard_ids: Sequence[str] 
     if len(paths) != len(set(paths)):
         raise ValueError("duplicate or colliding restored file paths")
     records = [_seal(root, a) for a in expected]
-    ledger = _safe_join(root, ".pretrain/verified-files.json")
+    prefix = "corpus-" if corpus_only else ""
+    ledger = _safe_join(root, f".pretrain/{prefix}verified-files.json")
     _write_json(ledger, {"schema_version": "pbisc.pretrain.file_seals.v1", "files": records})
     receipt = {"schema_version": RECEIPT_SCHEMA, "repo_id": lock["repo_id"], "revision": lock["revision"],
                "lock_sha256": _digest(lock), "release_sha256": lock["release"]["sha256"],
+               "data_scope": "canonical_corpus" if corpus_only else "legacy_with_panels",
                "corpus_fingerprint": lock["corpus_fingerprint"],
                "status": "TRAIN_READY" if shard_ids is None else "SUBSET_READY", "complete": shard_ids is None,
                "verified_shards": sum(a["kind"] == "tar" for a in assets), "verified_files": len(records),
                "verified_bytes": sum(r["size_bytes"] for r in records), "ledger_sha256": sha256_file(ledger),
                "verification_scope": "SHA256 of all declared restored files; archive members verified individually; no CUDA/training"}
-    _write_json(_safe_join(root, ".pretrain/verification.json"), receipt)
+    _write_json(_safe_join(root, f".pretrain/{prefix}verification.json"), receipt)
     return receipt
 
 
 def verify_dataset(data_root: Path | str, *, shard_ids: Sequence[str] | None = None,
-                   lock: dict[str, Any] | None = None) -> dict[str, Any]:
+                   lock: dict[str, Any] | None = None, corpus_only: bool = False) -> dict[str, Any]:
     """Rehash all restored files (including CSR bytes), independent of cache."""
     lock = load_lock() if lock is None else lock
     root = Path(data_root).expanduser().resolve()
     with _locked(root):
-        return _verify_restored(root, lock, shard_ids)
+        return _verify_restored(root, lock, shard_ids, corpus_only=corpus_only)
 
 
-def assert_training_ready(data_root: Path | str, *, lock: dict[str, Any] | None = None) -> dict[str, Any]:
+def assert_training_ready(data_root: Path | str, *, lock: dict[str, Any] | None = None,
+                          corpus_only: bool = False) -> dict[str, Any]:
     """Require full hash-audit evidence and unchanged file seals before training.
 
     A full `data verify` streams the entire corpus once. Subsequent training
@@ -353,17 +367,19 @@ def assert_training_ready(data_root: Path | str, *, lock: dict[str, Any] | None 
     root = Path(data_root).expanduser().resolve()
     try:
         with _locked(root, shared=True):
-            receipt, records = _ledger(root, lock)
+            receipt, records = _ledger(root, lock, corpus_only=corpus_only)
             if (receipt.get("status") != "TRAIN_READY" or receipt.get("complete") is not True
                     or receipt.get("verified_shards") != lock["count_shards"]):
                 raise ValueError("partial/metadata-only restoration cannot train; complete data download and full data verify are required")
             # Reconstruct exact expected file coverage from hash-bound manifests;
             # a mutable status flag or truncated ledger cannot authorize training.
             release = _release(root, lock)
-            extension_path = _safe_join(root, "relocation.pretrain.json")
-            expected_assets = [lock["release"], {"path": "relocation.pretrain.json",
-                               "sha256": sha256_file(extension_path), "size_bytes": extension_path.stat().st_size}]
-            expected_assets.extend({**a, "path": a["destination"]} for a in lock["supplemental_assets"])
+            expected_assets = [lock["release"]]
+            if not corpus_only:
+                extension_path = _safe_join(root, "relocation.pretrain.json")
+                expected_assets.append({"path": "relocation.pretrain.json",
+                                       "sha256": sha256_file(extension_path), "size_bytes": extension_path.stat().st_size})
+                expected_assets.extend({**a, "path": a["destination"]} for a in lock["supplemental_assets"])
             by_path = {a["path"]: a for a in release["assets"]}
             for asset in release["assets"]:
                 if asset["kind"] == "tar":
@@ -375,7 +391,7 @@ def assert_training_ready(data_root: Path | str, *, lock: dict[str, Any] | None 
                 raise ValueError("verification ledger does not cover the full pinned corpus")
             if any(r[k] != expected[r["path"]][k] for r in records for k in ("sha256", "size_bytes")):
                 raise ValueError("verification ledger hashes differ from pinned manifests")
-            if _json(root / "relocation.pretrain.json") != _extension(root, lock):
+            if not corpus_only and _json(root / "relocation.pretrain.json") != _extension(root, lock):
                 raise ValueError("pinned relocation extension changed")
             return receipt
     except (OSError, KeyError) as exc:
@@ -390,14 +406,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         sub.add_argument("--data-root", required=True)
         sub.add_argument("--cache-dir", required=command != "verify")
         sub.add_argument("--shard-id", action="append", help="bounded readback; never enables training")
+        sub.add_argument("--corpus-only", action="store_true", help="full canonical corpus; gene panels supplied by the repository")
     args = parser.parse_args(argv)
     try:
         if args.command == "plan":
-            result = plan_dataset(args.data_root, args.cache_dir, shard_ids=args.shard_id)
+            result = plan_dataset(args.data_root, args.cache_dir, shard_ids=args.shard_id, corpus_only=args.corpus_only)
         elif args.command == "download":
-            result = download_dataset(args.data_root, args.cache_dir, shard_ids=args.shard_id)
+            result = download_dataset(args.data_root, args.cache_dir, shard_ids=args.shard_id, corpus_only=args.corpus_only)
         else:
-            result = verify_dataset(args.data_root, shard_ids=args.shard_id)
+            result = verify_dataset(args.data_root, shard_ids=args.shard_id, corpus_only=args.corpus_only)
     except (OSError, ValueError) as exc:
         parser.exit(2, f"data {args.command}: {exc}\n")
     print(json.dumps(result, indent=2, sort_keys=True))

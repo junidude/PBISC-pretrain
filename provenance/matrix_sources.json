@@ -1,0 +1,198 @@
+{
+  "schema_version": "pbisc.pretrain.matrix_sources.v1",
+  "base_commit": "ff4d88f8b99addf9758413f3e6de0702d0c7be51",
+  "version": "0.2.0",
+  "runtime_files": [
+    {
+      "path": "src/pbisc/__init__.py",
+      "sha256": "0e3a6e69588fe01a30f8114a35ad64b7db28a7c7b890fd843cabe21d49f156a4",
+      "initial_release_sha256": "0e3a6e69588fe01a30f8114a35ad64b7db28a7c7b890fd843cabe21d49f156a4",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/data_release.py",
+      "sha256": "144814f5adc5091d899b453c354449bf0d5cd16fe331361675af274742864019",
+      "initial_release_sha256": "144814f5adc5091d899b453c354449bf0d5cd16fe331361675af274742864019",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/training/__init__.py",
+      "sha256": "f172e3b64992ff120c8cdd78b51df37f113815e85b1c63245c2363104c9e95e7",
+      "initial_release_sha256": "f172e3b64992ff120c8cdd78b51df37f113815e85b1c63245c2363104c9e95e7",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/training/allcell.py",
+      "sha256": "0b254b1f18db3f39a417f6499281167d36b13320bfe8e3cad7438d5ca20b26ce",
+      "initial_release_sha256": "0b254b1f18db3f39a417f6499281167d36b13320bfe8e3cad7438d5ca20b26ce",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/training/allcell_roundrobin.py",
+      "sha256": "46486bb2b2ebf3035666dbc46cc2e8c35ef44588b7c5d6511618108fea935aff",
+      "initial_release_sha256": "46486bb2b2ebf3035666dbc46cc2e8c35ef44588b7c5d6511618108fea935aff",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/training/build_e2_index.py",
+      "sha256": "ef46aa1c2a13f8707163dd6be1480dff44e768200ef3e149b5a4579c2986e63a",
+      "initial_release_sha256": "ef46aa1c2a13f8707163dd6be1480dff44e768200ef3e149b5a4579c2986e63a",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc/training/panel_contracts.py",
+      "sha256": "d4f928f97ab1f50615e399b86feb2c33eac2fbf1b62e1dce66379192c58e7672",
+      "initial_release_sha256": null,
+      "status": "added"
+    },
+    {
+      "path": "src/pbisc/training/portable.py",
+      "sha256": "1c79b38ca92221206d1d39e25ba265296f9547f1eeaaaf03c73b5acd69892137",
+      "initial_release_sha256": "6e44c0e60842d8867acf4a694c5fbb6805cdc30b7516b01b9569cc0cf0569f4e",
+      "status": "reviewed_update"
+    },
+    {
+      "path": "src/pbisc_pretrain/__init__.py",
+      "sha256": "d407e5cd9156cac2b095295b7910bd7ea56054ecfbead62a70df16a2b84e9688",
+      "initial_release_sha256": "c1847ca820543f30a4d0f1f847f2b9e4d6e4227bc5ee0506c755b4d17ff7355f",
+      "status": "reviewed_update"
+    },
+    {
+      "path": "src/pbisc_pretrain/cli.py",
+      "sha256": "b98cb7f6f8feb388ad1ddb1548b09983618152b45b985dc42131ac32c9f5a4d4",
+      "initial_release_sha256": "fa2493f647091f9015cb4fae7ce3dc5df4eeabb305378f7e8c4885a6876b7e22",
+      "status": "reviewed_update"
+    },
+    {
+      "path": "src/pbisc_pretrain/dataset.py",
+      "sha256": "19889a0b675ac795d863905042a196f7ccaa267e02f62a2e0d8e1f10ccd9c341",
+      "initial_release_sha256": "ff31a7251e22d2d3a72f4969e1590fdd6424c75d928d8c9d0643fd017dc28d85",
+      "status": "reviewed_update"
+    },
+    {
+      "path": "src/pbisc_pretrain/matrix.py",
+      "sha256": "f02bc0d3577efd21f9e82063822a76cc65d4200d9ff9106884c1bbf5dee13470",
+      "initial_release_sha256": null,
+      "status": "added"
+    },
+    {
+      "path": "src/pbisc_pretrain/resources.py",
+      "sha256": "57d4c6b957b81e28cb30d5f0f96ee01ae119679e6d49ca6302a3fc4e9769bef8",
+      "initial_release_sha256": "57d4c6b957b81e28cb30d5f0f96ee01ae119679e6d49ca6302a3fc4e9769bef8",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_pretrain/safety.py",
+      "sha256": "cc4403a757e0286305608d9548d6acb417026f54de1f37defbac993012128866",
+      "initial_release_sha256": "cc4403a757e0286305608d9548d6acb417026f54de1f37defbac993012128866",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_pretrain/smoke.py",
+      "sha256": "65bafa1af60a8fb477f5e45b6ae2fc7aa416eeb8a9d16e4ad198b61f51eb272c",
+      "initial_release_sha256": "65bafa1af60a8fb477f5e45b6ae2fc7aa416eeb8a9d16e4ad198b61f51eb272c",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/__init__.py",
+      "sha256": "46c7212b637e67f2b44b616fef47f964a284b576ba56c372f71463ce46ea24ee",
+      "initial_release_sha256": "46c7212b637e67f2b44b616fef47f964a284b576ba56c372f71463ce46ea24ee",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/collection_panel.py",
+      "sha256": "6881a278f6407e91665e67ba3a6e15b83c3a94dd4a670f8a6771818b3f0d5962",
+      "initial_release_sha256": null,
+      "status": "added"
+    },
+    {
+      "path": "src/pbisc_sdd/data.py",
+      "sha256": "8d8aae749b8a77c1c94b2026428f9682feb633e9ce1350ac1fadd5acb5292283",
+      "initial_release_sha256": "8d8aae749b8a77c1c94b2026428f9682feb633e9ce1350ac1fadd5acb5292283",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/diffusion.py",
+      "sha256": "ed97ca9fe56b9328da9ee455d4fbfc4b5102dfcf4f2364363bb715d19610429f",
+      "initial_release_sha256": "ed97ca9fe56b9328da9ee455d4fbfc4b5102dfcf4f2364363bb715d19610429f",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/ema.py",
+      "sha256": "dcc982725b7f94986b4b13b782c7a587b9efcf06d4fd444e9bf51bca051940c1",
+      "initial_release_sha256": "dcc982725b7f94986b4b13b782c7a587b9efcf06d4fd444e9bf51bca051940c1",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/expanded_panel.py",
+      "sha256": "6c84a8d7d16b22024702a516ae801202d358c590a725e6ace3127d9576b1429a",
+      "initial_release_sha256": "6c84a8d7d16b22024702a516ae801202d358c590a725e6ace3127d9576b1429a",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/experiment.py",
+      "sha256": "fc2e0f20dfa956152b9e236d390c749f3a0f52517eaa5714596de501fcd0762a",
+      "initial_release_sha256": "66a6174921621e297c346029f2638a08a9348c0ce15be467dd2723c7642e6fae",
+      "status": "reviewed_update"
+    },
+    {
+      "path": "src/pbisc_sdd/fast_rows.py",
+      "sha256": "83cb181499903d20d5aeb58a3e978af5cf132751057561d12f5920ce23378c60",
+      "initial_release_sha256": "83cb181499903d20d5aeb58a3e978af5cf132751057561d12f5920ce23378c60",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/gene_selection.py",
+      "sha256": "e8518f2a6c36d0691352c9e47a1725e025778e89e05061c3ad75044d42e2f785",
+      "initial_release_sha256": "e8518f2a6c36d0691352c9e47a1725e025778e89e05061c3ad75044d42e2f785",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/ladder_experiment.py",
+      "sha256": "2526edd5549c52f1325a4e94fb7fb5f9d0fe56601987dd71cc79f720e2448cc8",
+      "initial_release_sha256": "2526edd5549c52f1325a4e94fb7fb5f9d0fe56601987dd71cc79f720e2448cc8",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/model.py",
+      "sha256": "c3d725b97d003b9b2fb45d5061d5f7daffe89fd37147f9d53753b3ed2da77ffa",
+      "initial_release_sha256": "c3d725b97d003b9b2fb45d5061d5f7daffe89fd37147f9d53753b3ed2da77ffa",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/panel_ladder.py",
+      "sha256": "ba91282ae22a13129e4e96c9ede40cb6a3fb4e74c3c94101c809ef63b561cfb8",
+      "initial_release_sha256": "ba91282ae22a13129e4e96c9ede40cb6a3fb4e74c3c94101c809ef63b561cfb8",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/pbisc_sdd/proportion_hint.py",
+      "sha256": "7a352d73728e78c9d262e29c35628d2437af0bc7743b88c077ba81d911dd2a52",
+      "initial_release_sha256": "7a352d73728e78c9d262e29c35628d2437af0bc7743b88c077ba81d911dd2a52",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/model7_no_annotation/__init__.py",
+      "sha256": "5f3e6bc40ef0d8551c8cb9417459d4d8dd848c173b2d248286ef933267397ed2",
+      "initial_release_sha256": "5f3e6bc40ef0d8551c8cb9417459d4d8dd848c173b2d248286ef933267397ed2",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/model7_no_annotation/data.py",
+      "sha256": "08c0ca526f4383036d649ad1a3ba9a509cd9da7557118a50a797ebe7c3dea51e",
+      "initial_release_sha256": "08c0ca526f4383036d649ad1a3ba9a509cd9da7557118a50a797ebe7c3dea51e",
+      "status": "unchanged"
+    },
+    {
+      "path": "src/model7_no_annotation/data_e2.py",
+      "sha256": "be6086c6ff84a3a4d3256d3680ee89fddd9f5c0d35f5409166997d8e9a3b49c8",
+      "initial_release_sha256": "be6086c6ff84a3a4d3256d3680ee89fddd9f5c0d35f5409166997d8e9a3b49c8",
+      "status": "unchanged"
+    }
+  ],
+  "matrix_sha256": "dde8b4fd6a9bc0dc00b0e7db9e977b2cb0a150e3bd79077b8b32c1c9c09f7a90",
+  "bundle_manifest_sha256": "a07272c50430aae0df7a3120a59b5ffe00b57e1fa9a6755940d9895d550c975c",
+  "collection_manifest_sha256": "ce84ae0138081e4d358e925badde0be656f2c6c5b0cbe4115fef2855a539f9ac",
+  "math_changes": false,
+  "review_sha256": "2b8dc54c6e40636ba08454caa474732bec5fbb9548b1c7bfe6355bddf19806c7"
+}

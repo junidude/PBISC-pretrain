@@ -1,0 +1,146 @@
+{
+  "schema": "pbisc.gene_context_collection.inputs.v1",
+  "scope": "current harmonized2k3k6k plus frozen literature7k8k and deterministic10k extension; historical2k3k separately preserved",
+  "small_panel_choice": "user_confirmed_current_with_historical_separate",
+  "source_records": [
+    {
+      "role": "frozen_gene_statistics_source",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/audited_gene_universe.csv",
+      "bytes": 3759282,
+      "sha256": "4ba63a5eec12d308ee7f7656ef3a61c9295e7446a88efe92604734fe9fe0c0f6",
+      "collection_copy": "inputs/gene_universe.csv"
+    },
+    {
+      "role": "frozen_literature_order_source",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/evidence_resolved.csv",
+      "bytes": 9736437,
+      "sha256": "efca78457641bc5cb87da891c24dba6a6d8ad71fd71e75ff6a8bbc0f0c3a7b60",
+      "collection_copy": "inputs/literature_addition_order.csv"
+    },
+    {
+      "role": "original_literature_selector",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/build_panels.py",
+      "bytes": 20137,
+      "sha256": "ec36872c10d3a560fa60ae8d42760cf70b596806453eedba7a69612a826302f7",
+      "collection_copy": ""
+    },
+    {
+      "role": "original_literature_manifest",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/selection_manifest.json",
+      "bytes": 6252,
+      "sha256": "2c8922df98464c99b83a1402bb7cb5a2fc83122be4fc1c7a1bd1924b673b67f6",
+      "collection_copy": ""
+    },
+    {
+      "role": "current_HVG_ladder_manifest",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/manifest.json",
+      "bytes": 13488,
+      "sha256": "acbc8bc2cca5ecf3d3002e711b1d4a55b4069f17ae9666f0d64c197ca5cbc775",
+      "collection_copy": ""
+    },
+    {
+      "role": "current_HVG_rank_order",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/ranked_gene_positions.npy",
+      "bytes": 160904,
+      "sha256": "4f6ce4fa492525cf06d68119a40c27d525ab6a36a4a99e09046684ae6edd767a",
+      "collection_copy": ""
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/2k/selected_genes.csv",
+      "bytes": 148450,
+      "sha256": "4d7d5cfdd56872cf07a211864fc5e6b2aa9f696f650a26add4036e8bafb436a0",
+      "collection_copy": "panels/2k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/2k/gene_positions.npy",
+      "bytes": 16128,
+      "sha256": "5d3868ca43fa6d5565fa2a90f9c6aa07edc7d1f29a52b3673e1e4277542c9cb6",
+      "collection_copy": "panels/2k/gene_positions.npy"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/selected_genes.csv",
+      "bytes": 451366,
+      "sha256": "09248a3930e3fdefe1dbcd5d60cae4be81028526dcf097dd78169f5a415edfb6",
+      "collection_copy": "panels/6k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/panel_ladder_floor01_1m_20260923/tiers/6k/gene_positions.npy",
+      "bytes": 48128,
+      "sha256": "653ffa45ac519000baa41086c52408009391d6e68cfb218bc6a50d34163fcb24",
+      "collection_copy": "panels/6k/gene_positions.npy"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/selected_genes.csv",
+      "bytes": 2099815,
+      "sha256": "b9ba04fb554cdec206a72fb6b00f2b3a7c49f038abebaa05473d87a71e265ec1",
+      "collection_copy": "panels/7k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/7k/gene_positions.npy",
+      "bytes": 56128,
+      "sha256": "f4bda0b94e2f5d6fcc7e44e34765a1b77b31dce85de49925bc95b3906ee91e10",
+      "collection_copy": "panels/7k/gene_positions.npy"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/selected_genes.csv",
+      "bytes": 2474341,
+      "sha256": "62d961d83cf180dd925e080f696827f48074125cf2725d290cda21247d23c60f",
+      "collection_copy": "panels/8k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/plans/rare_gene_context_expansion_20261015/panels/8k/gene_positions.npy",
+      "bytes": 64128,
+      "sha256": "a6d8acb7ef27ae1c2733d50072e2d21cdb54b20a38910a5d10c4c8f9d72305d8",
+      "collection_copy": "panels/8k/gene_positions.npy"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_2000_train256x128_seed20260627/selected_genes.csv",
+      "bytes": 141269,
+      "sha256": "9ced976a4c10675f9628429e010faf3b6befcae9e3cf8336e7a26b942dbc3a3a",
+      "collection_copy": "historical/2k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_2000_train256x128_seed20260627/gene_positions.npy",
+      "bytes": 16128,
+      "sha256": "ac9c8a1520a319ff64de66c9b20a068b114cc398a44ae26f73fef8153a603f5e",
+      "collection_copy": "historical/2k/gene_positions.npy"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_3000_train256x128_seed20260627/selected_genes.csv",
+      "bytes": 212756,
+      "sha256": "a0dd75327fd0e22cc445d63eadd17e60dc46ac9a9777dc6e41b887798c12e673",
+      "collection_copy": "historical/3k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_3000_train256x128_seed20260627/gene_positions.npy",
+      "bytes": 24128,
+      "sha256": "670b339a37d41b4c917958b894e264b47ca2c431ef0142ede1b883f41d7ab64f",
+      "collection_copy": "historical/3k/gene_positions.npy"
+    }
+  ],
+  "derived_snapshots": [
+    {
+      "path": "inputs/gene_universe.csv",
+      "bytes": 2191241,
+      "sha256": "28491648e477ab220061cd2f48beac921bf1606c888a5a521c55b2ff84958a14"
+    },
+    {
+      "path": "inputs/literature_addition_order.csv",
+      "bytes": 353104,
+      "sha256": "4be46477bb96384325321efcf035b1fea0f0d20a613d7df4fee84ca629fbd165"
+    }
+  ],
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007"
+}

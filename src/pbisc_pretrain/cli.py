@@ -44,10 +44,11 @@ def _training_args(argv: list[str], *, prepare: bool) -> int:
     from .safety import require_single_process
     require_single_process()
     config = resolve_asset(args.config)
+    corpus_only = json.loads(config.read_text()).get("schema_version") == "pbisc.pretrain.profile.v2"
     preparing = prepare or args.prepare_only
     if not preparing:
         from .dataset import assert_training_ready
-        assert_training_ready(args.data_root)
+        assert_training_ready(args.data_root, corpus_only=corpus_only)
         from .safety import check_gpu_launch_policy
         # All committed production profiles use CUDA. CPU contract work uses `smoke`/tests.
         check_gpu_launch_policy()
@@ -67,7 +68,7 @@ def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", action="version", version=__version__)
-    parser.add_argument("command", nargs="?", choices=("doctor", "data", "prepare", "train", "smoke"))
+    parser.add_argument("command", nargs="?", choices=("doctor", "data", "prepare", "train", "smoke", "matrix"))
     if not argv or argv[0] in {"-h", "--help", "--version"}:
         parser.parse_args(argv)
         if not argv:
@@ -81,6 +82,9 @@ def main(argv: list[str] | None = None) -> int:
     if command == "data":
         from .dataset import main as data_main
         return int(data_main(remaining) or 0)
+    if command == "matrix":
+        from .matrix import main as matrix_main
+        return int(matrix_main(remaining) or 0)
     if command in {"prepare", "train"}:
         return _training_args(remaining, prepare=command == "prepare")
     if command == "smoke":

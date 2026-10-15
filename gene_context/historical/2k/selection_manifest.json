@@ -1,0 +1,72 @@
+{
+  "schema": "pbisc.gene_context_collection.tier.v1",
+  "panel": "historical/2k",
+  "n_genes": 2000,
+  "family": "historical_train256x128",
+  "status": "historical_experiment_panel_exact_copy",
+  "selection_rule": "Original historical2k; not the main harmonized current2k.",
+  "tensor_order": "CSV row and TXT line; ascending original raw panel_position",
+  "gene_id_key": "unique Ensembl ID; symbols are not deduplicated",
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007",
+  "trained_checkpoint_included": false,
+  "loader_ready": false,
+  "loader_gate": "Collection-local manifests are provenance records, not a replacement for the existing loader schema. New current3k and curated7k/8k/10k require reviewed loader/config bindings; 7k/8k/10k also require appropriate new or explicitly migrated/retrained weights.",
+  "endpoint_informed": false,
+  "gene_specificity_limit": "Literature programs include shared genes; HVG backfill is explicitly not literature-curated or rare-cell-specific.",
+  "original_sources": [
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_2000_train256x128_seed20260627/selected_genes.csv",
+      "bytes": 141269,
+      "sha256": "9ced976a4c10675f9628429e010faf3b6befcae9e3cf8336e7a26b942dbc3a3a",
+      "collection_copy": "historical/2k/selected_genes.csv"
+    },
+    {
+      "role": "frozen_panel_copy",
+      "original_path": "/home/sj_server_1/PBISC/immun-pbmc-fm/model_8_sparse_data_diffusion/artifacts/hvg_2000_train256x128_seed20260627/gene_positions.npy",
+      "bytes": 16128,
+      "sha256": "ac9c8a1520a319ff64de66c9b20a068b114cc398a44ae26f73fef8153a603f5e",
+      "collection_copy": "historical/2k/gene_positions.npy"
+    }
+  ],
+  "input_bindings": [
+    {
+      "path": "inputs/gene_universe.csv",
+      "bytes": 2191241,
+      "sha256": "28491648e477ab220061cd2f48beac921bf1606c888a5a521c55b2ff84958a14"
+    },
+    {
+      "path": "inputs/literature_addition_order.csv",
+      "bytes": 353104,
+      "sha256": "4be46477bb96384325321efcf035b1fea0f0d20a613d7df4fee84ca629fbd165"
+    },
+    {
+      "path": "inputs/source_bindings.json",
+      "bytes": 7417,
+      "sha256": "88d1a52ed6b6ad61f7fb0f739eb31dbe9ff4f22e15c9399dd27ec84f12a7277c"
+    }
+  ],
+  "builder_sha256": "137ca4bf62a772a4f7fecf56ca63a0ea565d0576006734449abcf8ec77bdc5cf",
+  "files": [
+    {
+      "path": "historical/2k/selected_genes.csv",
+      "bytes": 141269,
+      "sha256": "9ced976a4c10675f9628429e010faf3b6befcae9e3cf8336e7a26b942dbc3a3a"
+    },
+    {
+      "path": "historical/2k/gene_positions.npy",
+      "bytes": 16128,
+      "sha256": "ac9c8a1520a319ff64de66c9b20a068b114cc398a44ae26f73fef8153a603f5e"
+    },
+    {
+      "path": "historical/2k/gene_ids.txt",
+      "bytes": 32000,
+      "sha256": "2ff7f897da65083dd8c40f64490eb5bedd158feb798db97e97142e78fd75d48a"
+    },
+    {
+      "path": "historical/2k/gene_symbols.txt",
+      "bytes": 13063,
+      "sha256": "3b96dee6ed64d2869ae253769479aca796fa7ca565c8204a197e94ab359774db"
+    }
+  ]
+}

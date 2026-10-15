@@ -1,3 +1,5 @@
+> Initial v0.1.0 validation snapshot. Current matrix checks are recorded separately.
+
 # Validation evidence
 
 The initial preparation passed **166 CPU tests** using Python 3.11.14 and

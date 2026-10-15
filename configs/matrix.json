@@ -1,0 +1,137 @@
+{
+  "baseline": {
+    "context_dim": 512,
+    "hidden_dims": [
+      1024,
+      1024,
+      512,
+      256
+    ],
+    "time_embedding_dim": 128
+  },
+  "description": "7k/8k/10k by baseline, trunk2x/trunk4x or context2x/context4x; one architecture axis changes per ablation.",
+  "experiments": [
+    {
+      "context_multiplier": 1,
+      "id": "7k-1x",
+      "n_genes": 7000,
+      "profile": "configs/matrix/7k-1x.json",
+      "profile_sha256": "0ed6c6ee0105a1a46e8414bd3b9a5438c104dff941452155dfa2f25a94e15eb5",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 1,
+      "id": "7k-trunk2x",
+      "n_genes": 7000,
+      "profile": "configs/matrix/7k-trunk2x.json",
+      "profile_sha256": "7d6567afc63c40a751ebc5b38b49d8cf698d5de172e73fff8780c3480232ee55",
+      "trunk_multiplier": 2
+    },
+    {
+      "context_multiplier": 1,
+      "id": "7k-trunk4x",
+      "n_genes": 7000,
+      "profile": "configs/matrix/7k-trunk4x.json",
+      "profile_sha256": "8852bdbe001201b1ca436a529806bc4583cd2cd4a44e88da9a5772db5c5c8081",
+      "trunk_multiplier": 4
+    },
+    {
+      "context_multiplier": 2,
+      "id": "7k-ctx2x",
+      "n_genes": 7000,
+      "profile": "configs/matrix/7k-ctx2x.json",
+      "profile_sha256": "a9311c0666760f5b56dbeece57ceb5b7782e71b5234730e79d60359d79de7ef4",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 4,
+      "id": "7k-ctx4x",
+      "n_genes": 7000,
+      "profile": "configs/matrix/7k-ctx4x.json",
+      "profile_sha256": "f0e6697002c0c828a3e38e1d1921e623c41a5456fe23315b2f274b06b5fe9387",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 1,
+      "id": "8k-1x",
+      "n_genes": 8000,
+      "profile": "configs/matrix/8k-1x.json",
+      "profile_sha256": "f0b76faa71a0254ef8ce36eda8b88eb24b1b6ca29a8d17b5fcd98253be1e03f2",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 1,
+      "id": "8k-trunk2x",
+      "n_genes": 8000,
+      "profile": "configs/matrix/8k-trunk2x.json",
+      "profile_sha256": "053567c5b75ad3bb4eb1cf13654bc7c404027e8c1b4f780ab20895d41775071a",
+      "trunk_multiplier": 2
+    },
+    {
+      "context_multiplier": 1,
+      "id": "8k-trunk4x",
+      "n_genes": 8000,
+      "profile": "configs/matrix/8k-trunk4x.json",
+      "profile_sha256": "e376664b62a82c983c545a947e46d9cbd9b7bf8156c7243f73d13a49c83a4ac3",
+      "trunk_multiplier": 4
+    },
+    {
+      "context_multiplier": 2,
+      "id": "8k-ctx2x",
+      "n_genes": 8000,
+      "profile": "configs/matrix/8k-ctx2x.json",
+      "profile_sha256": "b2828f4facd6385c39f1bc65a65f5e4fb6232a67f9f010b84bc638aeecfc5876",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 4,
+      "id": "8k-ctx4x",
+      "n_genes": 8000,
+      "profile": "configs/matrix/8k-ctx4x.json",
+      "profile_sha256": "29321842abcf29a4e18933cc8a9e79a5afa6682276d36c37c792ed26b3c8565d",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 1,
+      "id": "10k-1x",
+      "n_genes": 10000,
+      "profile": "configs/matrix/10k-1x.json",
+      "profile_sha256": "1339af98b4ec93d7f69733db92df02812d5bc8f774c52a9de0fbb52d159feef8",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 1,
+      "id": "10k-trunk2x",
+      "n_genes": 10000,
+      "profile": "configs/matrix/10k-trunk2x.json",
+      "profile_sha256": "055d5cdff4daf7c9df3e85f0005d88b2e1a6bd6dba9a1242a8546c710a8896f8",
+      "trunk_multiplier": 2
+    },
+    {
+      "context_multiplier": 1,
+      "id": "10k-trunk4x",
+      "n_genes": 10000,
+      "profile": "configs/matrix/10k-trunk4x.json",
+      "profile_sha256": "dec5a83aaf53808eb06c9558b2d819b3a60ae9efbf8c755057f87de5445acbc7",
+      "trunk_multiplier": 4
+    },
+    {
+      "context_multiplier": 2,
+      "id": "10k-ctx2x",
+      "n_genes": 10000,
+      "profile": "configs/matrix/10k-ctx2x.json",
+      "profile_sha256": "6e80a5af14faf14616e2e3060229fb617238c0f3f156d3ee0bed4f5e8c68e81a",
+      "trunk_multiplier": 1
+    },
+    {
+      "context_multiplier": 4,
+      "id": "10k-ctx4x",
+      "n_genes": 10000,
+      "profile": "configs/matrix/10k-ctx4x.json",
+      "profile_sha256": "5fd56188e91ea3186c2cb5502263566110fc8c380a4ee3f98221138486442595",
+      "trunk_multiplier": 1
+    }
+  ],
+  "schema_version": "pbisc.pretrain.matrix.v1",
+  "training_scope": "All-K plus explicit topups; same16slots,seed,batch,workers,optimizer,precision and24GiBallocationceiling. New runs only; no training executed here."
+}

@@ -1,101 +1,95 @@
 # PBISC-pretrain
 
-Minimal, single-GPU PBISC diffusion pretraining code with a pinned data download,
-portable training profiles, and checkpoint resume. This repository is intended
-to be cloned onto a separate training machine; it does not require the original
-research workspace.
+Single-GPU PBISC-Diffusion pretraining with a pinned corpus, bundled gene
+contexts, relative training profiles, and verified checkpoint resume.
 
-The recommended starting candidate is **8k genes with a 4× trunk**. Its quality
-and full-run H100 memory requirements have not been established. The 6k and 7k
-profiles support controlled comparisons. A CPU smoke test verifies a small
-synthetic training contract; it does not validate full-corpus training or model
-quality.
+The requested experiment matrix has **15 fresh runs**: 7k, 8k and 10k genes,
+each with baseline 1x, trunk2x, trunk4x, ctx2x and ctx4x. Actual gene CSVs,
+Ensembl IDs, symbols, coordinate arrays, selection manifests and reconstruction
+inputs are committed under [`gene_context/`](gene_context/README.md).
 
-## Install on an allocated H100 machine
+| Variant, for each gene panel | Descending trunk widths | Context width |
+|---|---|---:|
+| `1x` | 1024, 1024, 512, 256 | 512 |
+| `trunk2x` | 2048, 2048, 1024, 512 | 512 |
+| `trunk4x` | 4096, 4096, 2048, 1024 | 512 |
+| `ctx2x` | 1024, 1024, 512, 256 | 1024 |
+| `ctx4x` | 1024, 1024, 512, 256 | 2048 |
 
-Use Linux x86_64, Python 3.11, glibc 2.28 or newer, and an NVIDIA driver compatible
-with CUDA 12.8. The initial target is one H100; multi-GPU/DDP is unsupported.
-See [environment details](docs/ENVIRONMENT.md) before running on another host.
+Time embedding stays 128. Each architecture ablation changes one width axis.
+All runs use the same sealed 16-slot All-K plus top-up schedule. The profiles
+and gene contexts work in a relocated checkout or installed wheel. Source and
+historical manifests retain their provenance; runtime does not consult the
+original research host.
+
+## Install on one allocated H100
+
+Use an authenticated GitHub account with private-repository access. The target
+is Linux x86_64, Python 3.11, glibc 2.28 or newer, and a CUDA 12.8-compatible
+NVIDIA driver. Multi-GPU/DDP is unsupported.
 
 ```bash
-git clone git@github.com:junidude/PBISC-pretrain.git
+git clone https://github.com/junidude/PBISC-pretrain.git
 cd PBISC-pretrain
 python3.11 -m venv .venv
 . .venv/bin/activate
-python -m pip install --upgrade pip
 python -m pip install torch==2.9.0 --index-url https://download.pytorch.org/whl/cu128
 python -m pip install -r requirements-h100.txt
 python -m pip install -e '.[dev]'
 pbisc-pretrain doctor
 ```
 
-`doctor` does not initialize CUDA by default. Installation and CPU checks are
-separate from successful H100 execution. Preserve the resulting environment
-report and run the GPU smoke test below inside the allocated job.
+See [environment details](docs/ENVIRONMENT.md). The managed GB10 source host
+must use the guard and `ml-run` policy in [AGENTS.md](AGENTS.md).
 
-## Download and verify the pinned corpus
+## Download the corpus and verify the bundled contexts
 
-The CLI uses the dataset revision and hashes committed in this repository.
-Choose separate transport-cache, restored-data, and run directories with ample
-free space. The full transport plus extracted corpus needs approximately twice
-the corpus storage; see [data and storage](docs/DATA.md) for the exact inventory.
-
-```bash
-pbisc-pretrain data plan --data-root /data/pbisc --cache-dir /scratch/pbisc-download
-pbisc-pretrain data download --data-root /data/pbisc --cache-dir /scratch/pbisc-download
-pbisc-pretrain data verify --data-root /data/pbisc --cache-dir /scratch/pbisc-download
-```
-
-Hugging Face account settings are not a download endpoint. If access requires
-authentication, use `hf auth login` or supply `HF_TOKEN` through the runtime
-environment. Never place tokens in source, command arguments, or logs. Access
-and public redistribution rights are separate; see [licensing](docs/LICENSING.md).
-
-## Prepare, smoke-test, and train
-
-Run these CUDA commands only within your GPU allocation, with one job using the
-GPU. On the managed GB10 source host, use the mandatory guarded launcher in
-[AGENTS.md](AGENTS.md).
+All example data and output paths are relative to the invocation directory.
+Allow at least 250 GB for transport/restoration, plus checkpoint storage for
+15 runs. Gene contexts come from this repository; `--corpus-only` downloads the
+fixed full canonical corpus without the old remote panel supplements.
 
 ```bash
-pbisc-pretrain smoke --output-dir /work/pbisc-smoke-cpu --device cpu
-pbisc-pretrain smoke --output-dir /work/pbisc-smoke-h100 --device cuda
-pbisc-pretrain prepare --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x
-pbisc-pretrain train --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x \
-  --stop-after-epoch 1
+pbisc-pretrain data plan --corpus-only --data-root data/pbisc --cache-dir cache/pbisc
+pbisc-pretrain data download --corpus-only --data-root data/pbisc --cache-dir cache/pbisc
+pbisc-pretrain data verify --corpus-only --data-root data/pbisc
+python gene_context/verify_collection.py --root gene_context
 ```
 
-Inspect the first completed slot's logs, checkpoint, finite losses, and memory
-before continuing. Resume the same run to execute the remaining schedule:
+The corpus must be `TRAIN_READY` in canonical-corpus scope. An isolated shard
+or metadata-only restoration cannot train. Authentication, when needed, uses
+normal HF credentials or runtime `HF_TOKEN`; no credentials are committed.
+
+## Prepare and execute the 15-run matrix
 
 ```bash
-pbisc-pretrain train --config configs/training/8k-trunk4x.json \
-  --data-root /data/pbisc --output-dir /work/runs/8k-trunk4x \
-  --resume /work/runs/8k-trunk4x/checkpoint_latest.pt
+pbisc-pretrain matrix list
+pbisc-pretrain smoke --device cpu --output-dir runs/smoke-cpu
+pbisc-pretrain smoke --device cuda --output-dir runs/smoke-h100
+pbisc-pretrain matrix prepare --data-root data/pbisc --output-root runs/gene-context
+pbisc-pretrain matrix run --data-root data/pbisc --output-root runs/gene-context
 ```
 
-An epoch is one of **16 schedule slots**, not one full-corpus pass. Resume starts
-at a completed epoch boundary; an interrupted epoch is replayed. The 7k and 8k
-models have different shapes and cannot resume a 6k checkpoint. Read the
-[training runbook](docs/TRAINING.md) and [scientific contract](docs/REPRODUCIBILITY.md)
-before changing a profile.
+Run CUDA commands only inside the authorized GPU allocation. The matrix uses
+one subprocess at a time and stops on failure. The default target is 16 schedule
+slots per run. `--only 7k-1x` selects one run; repeat `--only` to select several.
+Use `--stop-after-epoch 1` for a bounded first slot when validating the full
+model. After inspecting a stopped or interrupted run, explicitly authorize
+continuation with `--resume-existing`. Verified completed targets are skipped;
+unknown, conflicting or damaged outputs are rejected.
 
-## Repository scope
+See the [matrix runbook](docs/MATRIX.md), [training semantics](docs/TRAINING.md),
+and canonical [AGENTS.md](AGENTS.md). `CLAUDE.md` points to the same instructions.
 
-This repository contains pretraining code and metadata. Downloaded expression
-matrices, datasets, checkpoints, generated samples, and run logs stay outside
-Git. It does not include adaptation, evaluation claims, or a manuscript release.
+## Evidence and publication
 
-- [AGENTS.md](AGENTS.md): canonical instructions for coding and training agents;
-  [CLAUDE.md](CLAUDE.md) points to it.
-- [Environment](docs/ENVIRONMENT.md), [data](docs/DATA.md),
-  [training](docs/TRAINING.md), and [reproducibility](docs/REPRODUCIBILITY.md).
-- [Contributing](CONTRIBUTING.md), [security](SECURITY.md),
-  [licensing](docs/LICENSING.md), and [publication checklist](docs/PUBLISHING.md).
-- [Source audit](docs/SOURCE_AUDIT.md), [validation evidence](docs/VALIDATION.md),
-  and [independent review](docs/INDEPENDENT_REVIEW.md).
+The 10k panel contains 6,000 baseline genes, all 2,091 frozen literature additions
+and 1,909 train-HVG additions. This mixed selection is not a pure HVG size
+ablation, and feature coverage does not establish rare-cell recovery. Expanded
+panels and changed widths need fresh training.
 
-PBISC-authored code has no newly assigned blanket license. The upstream MIT
-notice is retained in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+See [source audit](docs/SOURCE_AUDIT.md), [matrix validation](provenance/matrix_validation.json), [independent matrix review](docs/MATRIX_REVIEW.md),
+[reproducibility](docs/REPRODUCIBILITY.md), [licensing](docs/LICENSING.md), and the
+[publication checklist](docs/PUBLISHING.md). Datasets, credentials, checkpoints,
+generated cells and run logs stay outside Git. PBISC licensing remains an owner
+decision; upstream notices are retained.

@@ -1,3 +1,5 @@
+> Historical review of the initial `ff4d88f` / v0.1.0 release. Its source SHA table applies to that release; the 15-run v0.2.0 matrix has separate current review evidence.
+
 # Independent PBISC-pretrain review
 
 Reviewed repository: `/home/sj_server_1/PBISC/PBISC-pretrain`.

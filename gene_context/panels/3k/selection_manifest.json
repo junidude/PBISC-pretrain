@@ -1,0 +1,57 @@
+{
+  "schema": "pbisc.gene_context_collection.tier.v1",
+  "panel": "panels/3k",
+  "n_genes": 3000,
+  "family": "current_floor01_1m",
+  "status": "newly_materialized_current_panel_no_new_trained_model",
+  "selection_rule": "Eligible universal rank prefix 3000; canonical tensor order.",
+  "tensor_order": "CSV row and TXT line; ascending original raw panel_position",
+  "gene_id_key": "unique Ensembl ID; symbols are not deduplicated",
+  "corpus_fingerprint": "eeb609250457248225432b6df94573b26a8cad8ac743670b5ca43134fea7e007",
+  "trained_checkpoint_included": false,
+  "loader_ready": false,
+  "loader_gate": "Collection-local manifests are provenance records, not a replacement for the existing loader schema. New current3k and curated7k/8k/10k require reviewed loader/config bindings; 7k/8k/10k also require appropriate new or explicitly migrated/retrained weights.",
+  "endpoint_informed": false,
+  "gene_specificity_limit": "Literature programs include shared genes; HVG backfill is explicitly not literature-curated or rare-cell-specific.",
+  "original_sources": [],
+  "input_bindings": [
+    {
+      "path": "inputs/gene_universe.csv",
+      "bytes": 2191241,
+      "sha256": "28491648e477ab220061cd2f48beac921bf1606c888a5a521c55b2ff84958a14"
+    },
+    {
+      "path": "inputs/literature_addition_order.csv",
+      "bytes": 353104,
+      "sha256": "4be46477bb96384325321efcf035b1fea0f0d20a613d7df4fee84ca629fbd165"
+    },
+    {
+      "path": "inputs/source_bindings.json",
+      "bytes": 7417,
+      "sha256": "88d1a52ed6b6ad61f7fb0f739eb31dbe9ff4f22e15c9399dd27ec84f12a7277c"
+    }
+  ],
+  "builder_sha256": "137ca4bf62a772a4f7fecf56ca63a0ea565d0576006734449abcf8ec77bdc5cf",
+  "files": [
+    {
+      "path": "panels/3k/selected_genes.csv",
+      "bytes": 223674,
+      "sha256": "c9a1805ccd3e908ce57c8e6deb8c83cf74c39b2a8511d8329171d7791122798c"
+    },
+    {
+      "path": "panels/3k/gene_positions.npy",
+      "bytes": 24128,
+      "sha256": "8ecfbc9c1bb2ee61eb6d9c7c2aabeedaceb8a4f478f9a93e707fd826edcc1121"
+    },
+    {
+      "path": "panels/3k/gene_ids.txt",
+      "bytes": 48000,
+      "sha256": "1a8c4fe6c2b954b3897260d37b9bbd618e65e1de294d94f451891544510492fa"
+    },
+    {
+      "path": "panels/3k/gene_symbols.txt",
+      "bytes": 19749,
+      "sha256": "46dc674824f6eb8d3d5dda81748d67fb02f3133138f2a03faf2a18d5bf6fd3e7"
+    }
+  ]
+}

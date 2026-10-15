@@ -1,3 +1,9 @@
+# v0.2.0 matrix update
+
+The active15 relative profiles are in `configs/matrix/` with one shared `configs/base/allcell-v2.json`. Actual frozen collection payloads and reconstruction inputs are bundled under `gene_context/`. Runtime collection validation pins the complete source index, raw-axis contract, tier manifests and each selected file; it independently replays the10k6000+2091+1909 recipe. Original source manifests remain unchanged. Canonical corpus scope no longer requires remote panel supplements. The matrix controller binds the executing Python source as well as configuration/data/panel inputs and validates actual model dimensions against each declared axis.
+
+The original v0.1.0 source map remains the extraction baseline. `provenance/matrix_sources.json` records the reviewed v0.2.0 deltas and final file identities. The original model, diffusion and EMA math are preserved.
+
 # Source extraction and scientific contract
 
 This repository extracts the PBISC-Diffusion pretraining dependency closure from
