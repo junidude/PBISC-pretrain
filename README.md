@@ -24,9 +24,8 @@ original research host.
 
 ## Install on one allocated H100
 
-Use an authenticated GitHub account with private-repository access. The target
-is Linux x86_64, Python 3.11, glibc 2.28 or newer, and a CUDA 12.8-compatible
-NVIDIA driver. Multi-GPU/DDP is unsupported.
+The target is Linux x86_64, Python 3.11, glibc 2.28 or newer, and a CUDA
+12.8-compatible NVIDIA driver. Multi-GPU/DDP is unsupported.
 
 ```bash
 git clone https://github.com/junidude/PBISC-pretrain.git
@@ -91,5 +90,5 @@ panels and changed widths need fresh training.
 See [source audit](docs/SOURCE_AUDIT.md), [matrix validation](provenance/matrix_validation.json), [independent matrix review](docs/MATRIX_REVIEW.md),
 [reproducibility](docs/REPRODUCIBILITY.md), [licensing](docs/LICENSING.md), and the
 [publication checklist](docs/PUBLISHING.md). Datasets, credentials, checkpoints,
-generated cells and run logs stay outside Git. PBISC licensing remains an owner
-decision; upstream notices are retained.
+generated cells and run logs stay outside Git. The code is released under the
+[MIT License](LICENSE); upstream notices are retained.

@@ -1,8 +1,8 @@
 # Code publication checklist
 
-This repository is prepared for a later code-availability release. Creating a
-private repository or passing tests does not authorize changing its visibility.
-Publication remains an explicit owner action.
+The owner made this repository public on 28 November 2026 under the MIT License,
+as the companion of the PBISC code repository. Publication remains an explicit
+owner action: passing tests does not authorize a release.
 
 Before a public release:
 

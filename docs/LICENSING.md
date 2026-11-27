@@ -1,9 +1,9 @@
 # Licensing and data access
 
-No blanket license has been newly assigned to PBISC-authored code, weights, or
-the aggregated training data. Choosing an authored-code license is an owner
-decision. Repository access and a future public code release do not by themselves
-grant permission to redistribute every source study or model artifact.
+The PBISC-authored code in this repository is released under the
+[MIT License](../LICENSE). The license covers the code only. It does not grant
+permission to redistribute the source studies, the aggregated training data or
+model artifacts.
 
 The diffusion adaptation's upstream MIT notice is reproduced unchanged in
 [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). That notice covers the stated
@@ -16,5 +16,5 @@ redistribution or visibility change. A downloadable or publicly visible Hugging
 Face repository does not resolve those permissions. Do not assign one common
 license to data whose source rights have not been reviewed.
 
-The code repository remains private until the owner explicitly authorizes a
-publication step. See [PUBLISHING.md](PUBLISHING.md) for the practical checks.
+The owner made the code repository public on 28 November 2026. See
+[PUBLISHING.md](PUBLISHING.md) for the checks that precede a release.

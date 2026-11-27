@@ -1,8 +1,26 @@
 cff-version: 1.2.0
-message: "Please cite the reviewed PBISC-pretrain software version. Manuscript citation details will be added when confirmed by the owner."
+message: "Please cite the reviewed PBISC-pretrain software version and the PBISC manuscript when available."
 title: "PBISC-pretrain"
 version: "0.2.0"
 type: software
+license: MIT
 authors:
-  - name: "PBISC contributors"
+  - family-names: "Lee"
+    given-names: "Seung Jun"
+    orcid: "https://orcid.org/0009-0006-3095-6873"
+  - family-names: "Kim"
+    given-names: "Jong Hwi"
+    orcid: "https://orcid.org/0009-0008-1835-9659"
+  - family-names: "Yang"
+    given-names: "Seongjun"
+    orcid: "https://orcid.org/0000-0001-7063-9430"
+  - family-names: "Lee"
+    given-names: "Gyubok"
+    orcid: "https://orcid.org/0009-0005-9397-0261"
+  - family-names: "Lee"
+    given-names: "Lucy Eunju"
+    orcid: "https://orcid.org/0000-0002-0897-661X"
+  - family-names: "Song"
+    given-names: "Jason Jungsik"
+    orcid: "https://orcid.org/0000-0003-0662-7704"
 repository-code: "https://github.com/junidude/PBISC-pretrain"
